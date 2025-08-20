@@ -1,19 +1,29 @@
+@keyframes overrush-zoom {
+    0% {
+        transform: scale(1);
+    }
+    75% {
+        transform: scale(1.0323);
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.20);
+    }
+    100% {
+        transform: scale(1.02);
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.32);
+    }
+}
+
 .pub-one:hover .pub-teaser {
-    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.32);
-    transition: text-shadow 0.2s;
-    transition-timing-function: cubic-bezier(0, 0, 0.58, 1); /* Custom curve */
+    animation: overrush-zoom 0.25s ease-in-out;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.32);
+    transform: scale(1.02);
 }
 
 .pub-one:hover .me {
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.10);
-    transition: text-shadow 0.2s;
-    transition-timing-function: cubic-bezier(0, 0, 0.58, 1); /* Custom curve */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .pub-one:hover .pub-title {
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.20);
-    transition: text-shadow 0.2s;
-    transition-timing-function: cubic-bezier(0, 0, 0.58, 1); /* Custom curve */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.20);
 }
 
 
@@ -26,17 +36,14 @@
 .pub-teaser {
     box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.12);
     border-radius: .3em;
-    transition: box-shadow 0.2s;
+    transition: box-shadow 0.2s, transform 0.2s;
     transition-timing-function: cubic-bezier(0, 0, 0.58, 1); /* Custom curve */
 }
 
 .pub-desc-wrapper {
     padding-top: 15px;
     padding-left: 10px;
-    vertical-align: middle;
-    transition: text-shadow 0.2s;
-    transition-timing-function: cubic-bezier(0, 0, 0.58, 1); /* Custom curve */
-}
+    vertical-align: middle;}
 
 .pub-title {
     font-weight: 700;
@@ -55,6 +62,8 @@
 
 .pub-authors .me {
     font-weight: 700;
+    transition: text-shadow 0.2s;
+    transition-timing-function: cubic-bezier(0, 0, 0.58, 1); /* Custom curve */
 }
 
 .pub-emph {
