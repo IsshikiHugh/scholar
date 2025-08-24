@@ -28,7 +28,7 @@
     height: 1.5px;
     background-color: var(--iro-aux-color);
     transition: width 0.2s, left 0.2s;
-    transition-timing-function: cubic-bezier(0,0,0.58,1); /* Custom curve */
+    transition-timing-function: cubic-bezier(0.2, 1, 0.5, 1.2); /* Adjusted for slower start and end */
     transform: translateX(-50%);
 }
 

@@ -1,28 +1,36 @@
-@keyframes overrush-zoom {
+/* Configurations. */
+:root {
+    --pub-hover-animation-duration: 0.15s;
+}
+
+@keyframes overrush-zoom-animation {
     0% {
         transform: scale(1);
+        box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.20);
     }
-    75% {
-        transform: scale(1.0323);
-        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.20);
+    90% {
+        transform: scale(1.03);
+        box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.20);
     }
     100% {
         transform: scale(1.02);
-        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.32);
+        box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.32);
     }
 }
 
 .pub-one:hover .pub-teaser {
-    animation: overrush-zoom 0.25s ease-in-out;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.32);
+    animation: overrush-zoom-animation var(--pub-hover-animation-duration) ease-in-out;
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.32);
     transform: scale(1.02);
 }
 
 .pub-one:hover .me {
+    transition: text-shadow var(--pub-hover-animation-duration);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .pub-one:hover .pub-title {
+    transition: text-shadow var(--pub-hover-animation-duration);
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.20);
 }
 
@@ -36,7 +44,7 @@
 .pub-teaser {
     box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.12);
     border-radius: .3em;
-    transition: box-shadow 0.2s, transform 0.2s;
+    transition: box-shadow var(--pub-hover-animation-duration), transform var(--pub-hover-animation-duration);
     transition-timing-function: cubic-bezier(0, 0, 0.58, 1); /* Custom curve */
 }
 
@@ -48,7 +56,7 @@
 .pub-title {
     font-weight: 700;
     font-size: 20px;
-    transition: text-shadow 0.2s;
+    transition: text-shadow var(--pub-hover-animation-duration);
     transition-timing-function: cubic-bezier(0, 0, 0.58, 1); /* Custom curve */
 }
 
@@ -62,7 +70,7 @@
 
 .pub-authors .me {
     font-weight: 700;
-    transition: text-shadow 0.2s;
+    transition: text-shadow var(--pub-hover-animation-duration);
     transition-timing-function: cubic-bezier(0, 0, 0.58, 1); /* Custom curve */
 }
 
