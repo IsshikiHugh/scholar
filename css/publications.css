@@ -1,6 +1,6 @@
 /* Configurations. */
 :root {
-    --pub-hover-animation-duration: 0.15s;
+    --pub-hover-animation-duration: 0.2s;
 }
 
 @keyframes overrush-zoom-animation {
