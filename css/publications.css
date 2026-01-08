@@ -8,10 +8,12 @@
         transform: scale(1);
         box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.20);
     }
+
     90% {
         transform: scale(1.03);
         box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.20);
     }
+
     100% {
         transform: scale(1.02);
         box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.32);
@@ -45,25 +47,29 @@
     box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.12);
     border-radius: .3em;
     transition: box-shadow var(--pub-hover-animation-duration), transform var(--pub-hover-animation-duration);
-    transition-timing-function: cubic-bezier(0, 0, 0.58, 1); /* Custom curve */
+    transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
+    /* Custom curve */
 }
 
 .pub-desc-wrapper {
     padding-top: 15px;
     padding-left: 10px;
-    vertical-align: middle;}
+    vertical-align: middle;
+}
 
 .pub-title {
     font-weight: 700;
     font-size: 20px;
     transition: text-shadow var(--pub-hover-animation-duration);
-    transition-timing-function: cubic-bezier(0, 0, 0.58, 1); /* Custom curve */
+    transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
+    /* Custom curve */
 }
 
 .pub-authors,
 .pub-authors .connection-link {
     color: var(--iro-text-color-lightest);
 }
+
 .pub-authors .connection-link:hover {
     color: var(--iro-url-activate-color);
 }
@@ -71,10 +77,45 @@
 .pub-authors .me {
     font-weight: 700;
     transition: text-shadow var(--pub-hover-animation-duration);
-    transition-timing-function: cubic-bezier(0, 0, 0.58, 1); /* Custom curve */
+    transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
+    /* Custom curve */
 }
 
 .pub-emph {
     color: var(--iro-pub-emphasis-color);
     font-weight: 700;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.pub-emph::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+            60deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent
+        );
+    animation: shine 4s infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    25% {
+        left: 20%;
+    }
+    50% {
+        left: 100%;
+    }
+    100% {
+        left: 200%;
+    }
 }
