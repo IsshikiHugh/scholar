@@ -45,3 +45,19 @@
     --iro-url-activate-color: #538392;
     --iro-pub-emphasis-color: #ff7777;
 }
+
+/* IroSimple */
+.theme-iro-simple {
+    --iro-theme-color: #1d1d20;
+    --iro-theme-color-lighter: #dadada;
+    --iro-aux-color: #efefef;
+    --iro-bg-color-darkest: #ededed;
+    --iro-bg-color-darker: #f6f6f6;
+    --iro-bg-color: #ffffff;
+    --iro-text-color: #1d1d20;
+    --iro-text-color-lighter: #7e7e7e;
+    --iro-text-color-lightest: #6e6e73;
+    --iro-url-deactivate-color: #0567e7;
+    --iro-url-activate-color: #0d83f9;
+    --iro-pub-emphasis-color: #ff0000;
+}
