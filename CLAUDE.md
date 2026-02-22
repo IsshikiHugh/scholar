@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Academic portfolio / personal homepage for Yan XIA (IsshikiHugh), a CS PhD student at UT Austin. Hosted on GitHub Pages at `scholar.isshikih.top`.
+Academic portfolio / personal homepage. Hosted on GitHub Pages.
 
 ## Tech Stack
 
@@ -54,4 +54,4 @@ Deployment is direct push to `main` — GitHub Pages serves from the repo root.
 | `css/colors.css` | Theme color variable definitions |
 | `css/page.css` | Layout, custom elements, section styling |
 | `css/publications.css` | Publication entry hover animations, teaser videos |
-| `CNAME` | Custom domain config (`scholar.isshikih.top`) |
+| `CNAME` | Custom domain config |

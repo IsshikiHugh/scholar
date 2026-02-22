@@ -1,12 +1,15 @@
 # Homepage
 
-This is the homepage of IsshikiHugh / Yan XIA.
+Academic portfolio / personal homepage built with vanilla HTML5/CSS3/JavaScript.
 
-Designed by Yan XIA.
+All homepage content is config-driven — edit `contents/data.json` to update profile, news, publications, experiences, projects, and collaborator links. No HTML knowledge needed.
 
 > [!CAUTION]
 >
-> If you want to build your own homepage with mine, please remember to remove or replace the `<!-- Google tag (gtag.js) -->` part in the `index.html` file! This is the Google Analytics tag, which is used to track the traffic of the homepage.
+> If you want to build your own homepage with mine, please remember to:
+> - Remove or replace the `<!-- Google tag (gtag.js) -->` part in `index.html` — this is the Google Analytics tag used to track traffic.
+> - Replace the content in `contents/data.json` with your own information.
+> - Mention this repository somewhere, solely for tracing the source of the code.
 
 ## Acknowledgement
 
