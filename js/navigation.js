@@ -11,3 +11,18 @@ function loadContent(file) {
         .catch(error => console.error('Error loading content:', error));
     }
 }
+
+function loadHome() {
+    console.log('Loading home from JSON...');
+    fetch('contents/data.json')
+        .then(response => response.json())
+        .then(data => {
+            // Populate ConnectionsDict from JSON data.
+            ConnectionsDict = data.connections;
+            // Render and inject the home page.
+            document.getElementById('content-main').innerHTML = renderHome(data);
+            // Apply connection auto-linking synchronously.
+            addConnectionLink(document.getElementById('content-main'));
+        })
+        .catch(error => console.error('Error loading home:', error));
+}

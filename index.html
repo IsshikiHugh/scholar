@@ -9,6 +9,7 @@
 
         <!-- JS scripts. -->
         <script src="js/connection.js"></script>
+        <script src="js/renderer.js"></script>
         <script src="js/navigation.js"></script>
         <script src="js/themes.js"></script>
 
@@ -35,7 +36,7 @@
     <body class="theme-iro-silent">
 
         <div class="navbar">
-            <a href="#" onclick="loadContent('home');enableAsyncModifier()"> Home </a>
+            <a href="#" onclick="loadHome()"> Home </a>
             <a href="#" onclick="loadContent('theme')"> Theme </a>
             <a href="#" onclick=""> Coming </a>
         </div>
@@ -60,9 +61,8 @@
                 }, interval);
             }
 
-            loadContent('home');
+            loadHome();
             initTheme();
-            enableAsyncModifier();
         </script>
     </body>
 </html>

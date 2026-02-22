@@ -1,0 +1,135 @@
+{
+    "profile": {
+        "name": [
+            { "text": "Yan", "annotation": "[i-a-n]" },
+            { "text": "XIA", "annotation": "[sh-i-a]" }
+        ],
+        "nameCN": "夏彦",
+        "email": { "user": "yan.xia", "domain": "utexas.edu" },
+        "avatar": "/assets/avatar.png",
+        "bio": [
+            "Hi! I am a first-year CS PhD student at the University of Texas at Austin, advised by Prof. Georgios Pavlakos. I earned my bachelor's degree from Zhejiang University in 2025.",
+            "I am interested in 3D Vision and Computer Graphics. My current research focus is on 4D humans and character animation."
+        ],
+        "links": [
+            { "name": "Google Scholar", "url": "https://scholar.google.com/citations?hl=zh-CN&user=7hCkqO0AAAAJ" },
+            { "name": "GitHub", "url": "https://github.com/isshikihugh" },
+            { "name": "Twitter", "url": "https://twitter.com/IsshikihXY" }
+        ]
+    },
+
+    "news": [
+        {
+            "date": "2025.02",
+            "content": "I joined UT Austin as a Ph.D. student!",
+            "bold": true
+        },
+        {
+            "date": "2025.02",
+            "content": "{HSMR} got accepted by CVPR 2025, as an \"oral\" paper!",
+            "annotations": {
+                "HSMR": "Reconstructing Humans with a Biomechanically Accurate Skeleton"
+            }
+        },
+        {
+            "date": "2024.07",
+            "content": "{GVHMR} got accepted by SIGGRAPH Asia 2024!",
+            "annotations": {
+                "GVHMR": "World-Grounded Human Motion Recovery via Gravity-View Coordinates"
+            }
+        }
+    ],
+
+    "publications": [
+        {
+            "teaser": { "type": "video", "src": "/assets/teasers/HSMR.mp4" },
+            "title": "Reconstructing Humans with a Biomechanically Accurate Skeleton",
+            "authors": [
+                { "name": "Yan Xia", "me": true },
+                { "name": "Xiaowei Zhou" },
+                { "name": "Etienne Vouga" },
+                { "name": "Qixing Huang" },
+                { "name": "Georgios Pavlakos" }
+            ],
+            "venue": "CVPR",
+            "year": 2025,
+            "emphasis": "(Oral Presentation)",
+            "links": {
+                "project page": "https://isshikihugh.github.io/HSMR/",
+                "arXiv": "https://arxiv.org/abs/2503.21751",
+                "code": "https://github.com/IsshikiHugh/HSMR"
+            },
+            "repo_id": "IsshikiHugh/HSMR"
+        },
+        {
+            "teaser": { "type": "video", "src": "/assets/teasers/GVHMR.mp4" },
+            "title": "World-Grounded Human Motion Recovery via Gravity-View Coordinates",
+            "authors": [
+                { "name": "Zehong Shen", "marker": "*" },
+                { "name": "Huaijin Pi", "marker": "*" },
+                { "name": "Yan Xia", "me": true },
+                { "name": "Zhi Cen" },
+                { "name": "Sida Peng" },
+                { "name": "Zechen Hu" },
+                { "name": "Hujun Bao" },
+                { "name": "Ruizhen Hu" },
+                { "name": "Xiaowei Zhou" }
+            ],
+            "venue": "SIGGRAPH Asia",
+            "year": 2024,
+            "links": {
+                "project page": "https://zju3dv.github.io/gvhmr/",
+                "arXiv": "https://arxiv.org/abs/2409.06662",
+                "code": "https://github.com/zju3dv/GVHMR"
+            },
+            "repo_id": "zju3dv/GVHMR"
+        }
+    ],
+
+    "experiences": {
+        "education": [
+            { "period": "25.08-NOW", "description": "CS Ph.D. student at the University of Texas at Austin, advised by Prof. Georgios Pavlakos." },
+            { "period": "21.09-25.06", "description": "Bachelor of Computer Science and Technology, Zhejiang University" }
+        ],
+        "internships": [
+            { "period": "24.07-24.11", "description": "Interned at the University of Texas at Austin, advised by Prof. Georgios Pavlakos." },
+            { "period": "23.07-25.06", "description": "Interned at the State Key Laboratory of CAD&CG, Zhejiang University, advised by Prof. Sida Peng and Prof. Xiaowei Zhou." }
+        ],
+        "services": "CVPR(2026)"
+    },
+
+    "projects": [
+        {
+            "name": "LearningHumans",
+            "url": "https://github.com/IsshikiHugh/LearningHumans",
+            "description": "Jupyter notebooks containing code snippets for understanding common techniques for virtual humans."
+        },
+        {
+            "name": "ExpOven",
+            "url": "https://github.com/IsshikiHugh/ExpOven",
+            "description": "Python package & CLI for experiments notification."
+        },
+        {
+            "name": "Isshiki修's Notebook",
+            "url": "https://note.isshikih.top",
+            "description": "My personal notebooks written in Chinese, converging high-caliber notes and tutorials on various CS subjects. Popular among CS students at Zhejiang University. (180k+ page views until Mar. 2025.)"
+        }
+    ],
+
+    "connections": {
+        "Zehong Shen": "https://zehongs.github.io/",
+        "Huaijin Pi": "https://phj128.github.io/",
+        "Zhi Cen": "https://anitacen.github.io/",
+        "Sida Peng": "https://pengsida.net/",
+        "Hujun Bao": "http://www.cad.zju.edu.cn/home/bao/",
+        "Ruizhen Hu": "https://csse.szu.edu.cn/staff/ruizhenhu/",
+        "Xiaowei Zhou": "https://www.xzhou.me/",
+        "Georgios Pavlakos": "https://geopavlakos.github.io/",
+        "Etienne Vouga": "https://www.cs.utexas.edu/~evouga/",
+        "Qixing Huang": "https://www.cs.utexas.edu/~huangqx/"
+    },
+
+    "footer": {
+        "lastUpdate": "2026.02.21"
+    }
+}
