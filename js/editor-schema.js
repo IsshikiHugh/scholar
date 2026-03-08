@@ -142,10 +142,9 @@ const EDITOR_SCHEMA = [
                             connectionCheck: true,
                             itemSchema: {
                                 type: "object",
-                                labelKey: "name",
                                 fields: [
                                     { key: "name", label: "Name", type: "text", required: true },
-                                    { key: "marker", label: "Marker", type: "text", required: false, flex: 0.15 }
+                                    { key: "marker", label: "Marker", type: "text", required: false, flex: 0.2 }
                                 ]
                             }
                         },
