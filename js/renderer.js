@@ -12,11 +12,13 @@ function renderNewsContent(content, annotations) {
     });
 }
 
+let _myName = '';
+
 function renderPubAuthors(authors) {
     return authors.map((a, i) => {
         let name = a.name;
         if (a.marker) name += `<sup>${a.marker}</sup>`;
-        if (a.me) name = `<span class="me">${name}</span>`;
+        if (a.name === _myName) name = `<span class="me">${name}</span>`;
         return name + (i < authors.length - 1 ? ',\n                    ' : '');
     }).join('');
 }
@@ -202,6 +204,7 @@ function renderFooter(footer) {
 }
 
 function renderHome(data) {
+    _myName = (data.profile && data.profile.myName) || '';
     return [
         renderNavNotice(),
         '',

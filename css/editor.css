@@ -1,0 +1,630 @@
+/* =============================================
+   Root Layout — editor left | handle | preview right
+   ============================================= */
+
+.editor-root {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.editor-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.editor-right {
+    width: 50%;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.editor-right.hidden {
+    width: 0;
+    min-width: 0;
+    overflow: hidden;
+}
+
+/* =============================================
+   Headers — one for editor, one for preview
+   ============================================= */
+
+.editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--iro-bg-color-darker);
+    border-bottom: 1px solid var(--iro-bg-color-darkest);
+    height: 44px;
+    box-sizing: border-box;
+}
+
+.editor-header-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--iro-text-color);
+    white-space: nowrap;
+}
+
+.editor-header-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.editor-header-preview {
+    border-left: none;
+}
+
+/* =============================================
+   Editor Body — tabs + form
+   ============================================= */
+
+.editor-body {
+    flex: 1;
+    display: flex;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* =============================================
+   Tabs
+   ============================================= */
+
+.editor-tabs {
+    display: flex;
+    flex-direction: column;
+    width: 120px;
+    min-width: 120px;
+    background-color: var(--iro-bg-color-darker);
+    border-right: 1px solid var(--iro-bg-color-darkest);
+    overflow-y: auto;
+}
+
+.editor-tab {
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--iro-text-color-lighter);
+    border: none;
+    background: none;
+    text-align: left;
+    border-left: 3px solid transparent;
+    transition: all 0.15s;
+}
+
+.editor-tab:hover {
+    background-color: var(--iro-bg-color-darkest);
+    color: var(--iro-text-color);
+}
+
+.editor-tab.active {
+    color: var(--iro-text-color);
+    font-weight: 700;
+    border-left-color: var(--iro-theme-color);
+    background-color: var(--iro-bg-color);
+}
+
+/* =============================================
+   Form Panel
+   ============================================= */
+
+.editor-form-panel {
+    flex: 1;
+    padding: 20px 24px;
+    overflow-y: auto;
+    background-color: var(--iro-bg-color);
+    min-width: 0;
+}
+
+/* =============================================
+   Resize Handle
+   ============================================= */
+
+.editor-resize-handle {
+    width: 6px;
+    min-width: 6px;
+    background-color: var(--iro-bg-color-darkest);
+    cursor: col-resize;
+    user-select: none;
+    transition: background-color 0.15s;
+}
+
+.editor-resize-handle:hover,
+.editor-resize-handle.dragging {
+    background-color: var(--iro-theme-color);
+}
+
+/* =============================================
+   Preview Scroll Area
+   ============================================= */
+
+.editor-preview-scroll {
+    flex: 1;
+    overflow-y: auto;
+    zoom: 0.75;
+}
+
+/* =============================================
+   Buttons
+   ============================================= */
+
+.editor-btn {
+    padding: 5px 12px;
+    border: 1px solid var(--iro-bg-color-darkest);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: inherit;
+    transition: all 0.15s;
+    background-color: var(--iro-bg-color);
+    color: var(--iro-text-color);
+}
+
+.editor-btn:hover {
+    background-color: var(--iro-bg-color-darkest);
+}
+
+.editor-btn-danger {
+    background-color: transparent;
+    color: var(--iro-pub-emphasis-color);
+    border-color: var(--iro-pub-emphasis-color);
+    padding: 3px 8px;
+    font-size: 12px;
+}
+
+.editor-btn-danger:hover {
+    background-color: var(--iro-pub-emphasis-color);
+    color: white;
+}
+
+.editor-btn-add {
+    background-color: transparent;
+    color: var(--iro-url-deactivate-color);
+    border: 1px dashed var(--iro-url-deactivate-color);
+    padding: 6px 12px;
+    font-size: 13px;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.editor-btn-add:hover {
+    background-color: var(--iro-bg-color-darker);
+}
+
+/* =============================================
+   Form Fields
+   ============================================= */
+
+.editor-field {
+    margin-bottom: 16px;
+}
+
+.editor-field > label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--iro-text-color);
+    margin-bottom: 4px;
+}
+
+.editor-field > label .field-required {
+    color: var(--iro-pub-emphasis-color);
+    margin-left: 2px;
+}
+
+.editor-field .field-description {
+    font-size: 12px;
+    color: var(--iro-text-color-lightest);
+    margin-bottom: 4px;
+}
+
+.editor-field input[type="text"],
+.editor-field input[type="url"],
+.editor-field input[type="number"],
+.editor-field textarea,
+.editor-field select {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid var(--iro-bg-color-darkest);
+    border-radius: 4px;
+    background-color: var(--iro-bg-color);
+    color: var(--iro-text-color);
+    font-family: inherit;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.15s;
+}
+
+.editor-field input:focus,
+.editor-field textarea:focus,
+.editor-field select:focus {
+    outline: none;
+    border-color: var(--iro-theme-color);
+}
+
+.editor-field textarea {
+    min-height: 60px;
+    resize: vertical;
+}
+
+.editor-field.invalid input,
+.editor-field.invalid textarea {
+    border-color: var(--iro-pub-emphasis-color);
+}
+
+/* Toggle (checkbox) */
+.editor-toggle-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.editor-toggle-wrapper input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--iro-theme-color);
+}
+
+.editor-toggle-wrapper label {
+    font-size: 14px;
+    color: var(--iro-text-color);
+    cursor: pointer;
+}
+
+/* =============================================
+   Object Fields (grouped sub-fields)
+   ============================================= */
+
+.editor-object-group {
+    padding: 12px 16px;
+    border: 1px solid var(--iro-bg-color-darkest);
+    border-radius: 4px;
+    background-color: var(--iro-bg-color-darker);
+}
+
+.editor-object-group > .editor-field {
+    margin-bottom: 12px;
+}
+
+.editor-object-group > .editor-field:last-child {
+    margin-bottom: 0;
+}
+
+/* Nested labels inside object groups are smaller than top-level labels */
+.editor-object-group > .editor-field > label,
+.editor-inline-object > .editor-field > label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--iro-text-color-lighter);
+}
+
+/* Inline object (for simple objects like email, authors) */
+.editor-inline-object {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.editor-inline-object > .editor-field {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.editor-inline-object > .editor-field:has(.editor-toggle-wrapper) {
+    flex: 0 0 auto;
+}
+
+/* =============================================
+   Array Fields
+   ============================================= */
+
+.editor-array-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.editor-array-item {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 12px;
+    border: 1px solid var(--iro-bg-color-darkest);
+    border-radius: 4px;
+    background-color: var(--iro-bg-color-darker);
+}
+
+/* Collapsible items with body content need top alignment */
+.editor-array-item:has(.editor-array-item-body) {
+    align-items: flex-start;
+}
+
+.editor-array-item-content {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Remove extra margin from the field wrapper when inside an array item */
+.editor-array-item-content > .editor-field {
+    margin-bottom: 0;
+}
+
+.editor-array-item-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 2px;
+}
+
+.editor-array-item-controls button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--iro-text-color-lightest);
+    padding: 2px 4px;
+    line-height: 1;
+}
+
+.editor-array-item-controls button:hover {
+    color: var(--iro-text-color);
+}
+
+/* Collapsible array items (for complex objects like publications) */
+.editor-array-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 6px 0;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--iro-theme-color);
+    border-bottom: 1px solid var(--iro-bg-color-darkest);
+    margin-bottom: 8px;
+}
+
+.editor-array-item-label {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.editor-array-item-header .collapse-icon {
+    transition: transform 0.15s;
+    font-size: 12px;
+}
+
+.editor-array-item.collapsed .editor-array-item-body {
+    display: none;
+}
+
+.editor-array-item.collapsed .editor-array-item-header {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.editor-array-item.collapsed .collapse-icon {
+    transform: rotate(-90deg);
+}
+
+/* Connection check indicator */
+.editor-connection-dot {
+    position: relative;
+    width: 8px;
+    min-width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--iro-bg-color-darkest);
+    cursor: default;
+}
+
+.editor-connection-dot.linked {
+    background-color: var(--iro-url-deactivate-color);
+}
+
+.editor-connection-dot.missing {
+    background-color: var(--iro-pub-emphasis-color);
+}
+
+.editor-connection-dot.me {
+    background-color: var(--iro-theme-color);
+}
+
+.editor-connection-dot.hidden {
+    visibility: hidden;
+}
+
+/* Tooltip */
+.editor-connection-dot::after {
+    content: attr(data-tip);
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: rgba(48, 48, 48, 0.92);
+    color: #eee;
+    font-size: 11px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s;
+    z-index: 10;
+}
+
+.editor-connection-dot:hover::after {
+    opacity: 1;
+}
+
+/* Array index number */
+.editor-array-index {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--iro-bg-color-darkest);
+    color: var(--iro-text-color-lighter);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Collapsible array section */
+.editor-array-collapsible {
+    border: 1px solid var(--iro-bg-color-darkest);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.editor-array-collapse-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: var(--iro-bg-color-darker);
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--iro-text-color);
+    user-select: none;
+}
+
+.editor-array-collapse-header .collapse-icon {
+    transition: transform 0.15s;
+    font-size: 12px;
+}
+
+.editor-array-collapsible.collapsed .editor-array-container {
+    display: none;
+}
+
+.editor-array-collapsible.collapsed .collapse-icon {
+    transform: rotate(-90deg);
+}
+
+.editor-array-collapsible .editor-array-container {
+    padding: 8px;
+}
+
+/* Simple array items (single textarea/text) */
+.editor-array-item-simple {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.editor-array-item-simple .editor-field {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.editor-array-item-simple .editor-array-item-controls {
+    flex-direction: row;
+    padding-top: 7px;
+}
+
+/* =============================================
+   Key-Value Editor
+   ============================================= */
+
+.editor-kv-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.editor-kv-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.editor-kv-row input {
+    flex: 1;
+    padding: 6px 10px;
+    border: 1px solid var(--iro-bg-color-darkest);
+    border-radius: 4px;
+    background-color: var(--iro-bg-color);
+    color: var(--iro-text-color);
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.editor-kv-row input:focus {
+    outline: none;
+    border-color: var(--iro-theme-color);
+}
+
+.editor-kv-row .kv-separator {
+    color: var(--iro-text-color-lightest);
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+/* =============================================
+   Section Header in Form
+   ============================================= */
+
+.editor-section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--iro-text-color);
+    margin-bottom: 4px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--iro-theme-color);
+}
+
+.editor-section-description {
+    font-size: 13px;
+    color: var(--iro-text-color-lightest);
+    margin-bottom: 16px;
+}
+
+/* =============================================
+   Responsive
+   ============================================= */
+
+@media (max-width: 1200px) {
+    .editor-right {
+        display: none;
+    }
+
+    .editor-resize-handle {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .editor-tabs {
+        width: 80px;
+        min-width: 80px;
+    }
+
+    .editor-tab {
+        padding: 10px 8px;
+        font-size: 12px;
+    }
+
+    .editor-form-panel {
+        padding: 16px 12px;
+    }
+
+    .editor-header {
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px 12px;
+    }
+}

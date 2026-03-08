@@ -1,24 +1,48 @@
 {
     "profile": {
+        "myName": "Yan Xia",
         "name": [
-            { "text": "Yan", "annotation": "[i-a-n]" },
-            { "text": "XIA", "annotation": "[sh-i-a]" }
+            {
+                "text": "Yan",
+                "annotation": "[i-a-n]"
+            },
+            {
+                "text": "XIA",
+                "annotation": "[sh-i-a]"
+            }
         ],
         "nameCN": "夏彦",
-        "email": { "user": "yan.xia", "domain": "utexas.edu" },
+        "email": {
+            "user": "yan.xia",
+            "domain": "utexas.edu"
+        },
         "avatar": "/assets/avatar.png",
         "bio": [
             "Hi! I am a first-year CS PhD student at the University of Texas at Austin, advised by Prof. Georgios Pavlakos. Before that, I earned my bachelor's degree from Zhejiang University in 2025, where I work closely with Prof. Sida Peng and Prof. Xiaowei Zhou.",
             "I am interested in 3D Vision and Computer Graphics. My current research focus is on 4D humans and character animation."
         ],
         "links": [
-            { "name": "Google Scholar", "url": "https://scholar.google.com/citations?hl=zh-CN&user=7hCkqO0AAAAJ" },
-            { "name": "GitHub", "url": "https://github.com/isshikihugh" },
-            { "name": "Twitter", "url": "https://twitter.com/IsshikihXY" }
+            {
+                "name": "Google Scholar",
+                "url": "https://scholar.google.com/citations?hl=zh-CN&user=7hCkqO0AAAAJ"
+            },
+            {
+                "name": "GitHub",
+                "url": "https://github.com/isshikihugh"
+            },
+            {
+                "name": "Twitter",
+                "url": "https://twitter.com/IsshikihXY"
+            }
         ]
     },
-
     "news": [
+        {
+            "date": "2025.02",
+            "content": "One paper got accepted by CVPR 2026!",
+            "bold": false,
+            "annotations": {}
+        },
         {
             "date": "2025.02",
             "content": "I joined UT Austin as a Ph.D. student!",
@@ -39,17 +63,29 @@
             }
         }
     ],
-
     "publications": [
         {
-            "teaser": { "type": "video", "src": "/assets/teasers/HSMR.mp4" },
+            "teaser": {
+                "type": "video",
+                "src": "/assets/teasers/HSMR.mp4"
+            },
             "title": "Reconstructing Humans with a Biomechanically Accurate Skeleton",
             "authors": [
-                { "name": "Yan Xia", "me": true },
-                { "name": "Xiaowei Zhou" },
-                { "name": "Etienne Vouga" },
-                { "name": "Qixing Huang" },
-                { "name": "Georgios Pavlakos" }
+                {
+                    "name": "Yan Xia"
+                },
+                {
+                    "name": "Xiaowei Zhou"
+                },
+                {
+                    "name": "Etienne Vouga"
+                },
+                {
+                    "name": "Qixing Huang"
+                },
+                {
+                    "name": "Georgios Pavlakos"
+                }
             ],
             "venue": "CVPR",
             "year": 2025,
@@ -62,18 +98,41 @@
             "repo_id": "IsshikiHugh/HSMR"
         },
         {
-            "teaser": { "type": "video", "src": "/assets/teasers/GVHMR.mp4" },
+            "teaser": {
+                "type": "video",
+                "src": "/assets/teasers/GVHMR.mp4"
+            },
             "title": "World-Grounded Human Motion Recovery via Gravity-View Coordinates",
             "authors": [
-                { "name": "Zehong Shen", "marker": "*" },
-                { "name": "Huaijin Pi", "marker": "*" },
-                { "name": "Yan Xia", "me": true },
-                { "name": "Zhi Cen" },
-                { "name": "Sida Peng" },
-                { "name": "Zechen Hu" },
-                { "name": "Hujun Bao" },
-                { "name": "Ruizhen Hu" },
-                { "name": "Xiaowei Zhou" }
+                {
+                    "name": "Zehong Shen",
+                    "marker": "*"
+                },
+                {
+                    "name": "Huaijin Pi",
+                    "marker": "*"
+                },
+                {
+                    "name": "Yan Xia"
+                },
+                {
+                    "name": "Zhi Cen"
+                },
+                {
+                    "name": "Sida Peng"
+                },
+                {
+                    "name": "Zechen Hu"
+                },
+                {
+                    "name": "Hujun Bao"
+                },
+                {
+                    "name": "Ruizhen Hu"
+                },
+                {
+                    "name": "Xiaowei Zhou"
+                }
             ],
             "venue": "SIGGRAPH Asia",
             "year": 2024,
@@ -85,19 +144,29 @@
             "repo_id": "zju3dv/GVHMR"
         }
     ],
-
     "experiences": {
         "education": [
-            { "period": "25.08-NOW", "description": "CS Ph.D. student at the University of Texas at Austin, advised by Prof. Georgios Pavlakos." },
-            { "period": "21.09-25.06", "description": "Bachelor of Computer Science and Technology, Zhejiang University" }
+            {
+                "period": "25.08-NOW",
+                "description": "CS Ph.D. student at the University of Texas at Austin, advised by Prof. Georgios Pavlakos."
+            },
+            {
+                "period": "21.09-25.06",
+                "description": "Bachelor of Computer Science and Technology, Zhejiang University"
+            }
         ],
         "internships": [
-            { "period": "24.07-24.11", "description": "Interned at the University of Texas at Austin, advised by Prof. Georgios Pavlakos." },
-            { "period": "23.07-25.06", "description": "Interned at the State Key Laboratory of CAD&CG, Zhejiang University, advised by Prof. Sida Peng and Prof. Xiaowei Zhou." }
+            {
+                "period": "24.07-24.11",
+                "description": "Interned at the University of Texas at Austin, advised by Prof. Georgios Pavlakos."
+            },
+            {
+                "period": "23.07-25.06",
+                "description": "Interned at the State Key Laboratory of CAD&CG, Zhejiang University, advised by Prof. Sida Peng and Prof. Xiaowei Zhou."
+            }
         ],
-        "services": "CVPR(2026)"
+        "services": "CVPR(2026), ECCV(2026)"
     },
-
     "projects": [
         {
             "name": "LearningHumans",
@@ -115,7 +184,6 @@
             "description": "My personal notebooks written in Chinese, converging high-caliber notes and tutorials on various CS subjects. Popular among CS students at Zhejiang University. (180k+ page views until Mar. 2025.)"
         }
     ],
-
     "connections": {
         "Zehong Shen": "https://zehongs.github.io/",
         "Huaijin Pi": "https://phj128.github.io/",
@@ -128,8 +196,7 @@
         "Etienne Vouga": "https://www.cs.utexas.edu/~evouga/",
         "Qixing Huang": "https://www.cs.utexas.edu/~huangqx/"
     },
-
     "footer": {
-        "lastUpdate": "2026.02.21"
+        "lastUpdate": "2026.03.07"
     }
 }
