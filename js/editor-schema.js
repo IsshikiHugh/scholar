@@ -191,11 +191,27 @@ const EDITOR_SCHEMA = [
             },
             {
                 key: "services",
-                label: "Conference Reviewers",
-                type: "text",
-                required: false,
-                placeholder: "e.g. CVPR(2026)",
-                description: "Comma-separated list of conferences."
+                label: "Services",
+                type: "object",
+                inline: false,
+                fields: [
+                    {
+                        key: "conference_reviewer",
+                        label: "Conference Reviewer",
+                        type: "text",
+                        required: false,
+                        placeholder: "e.g. CVPR(2026)",
+                        description: "Comma-separated list of conferences."
+                    },
+                    {
+                        key: "journal_reviewer",
+                        label: "Journal Reviewer",
+                        type: "text",
+                        required: false,
+                        placeholder: "e.g. TPAMI",
+                        description: "Comma-separated list of journals."
+                    }
+                ]
             }
         ]
     },

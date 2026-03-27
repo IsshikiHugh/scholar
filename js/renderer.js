@@ -178,7 +178,8 @@ ${internItems}
     </p>
 
     <p>
-        <b>Conference Reviewers</b>: ${exp.services}.
+        <b>Conference Reviewer</b>: ${exp.services.conference_reviewer}.<br>
+        <b>Journal Reviewer</b>: ${exp.services.journal_reviewer}.
     </p>
 </iro-section>`;
 }

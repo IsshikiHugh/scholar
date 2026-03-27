@@ -275,7 +275,7 @@ function renderObjectField(schema, value, path) {
     const wrapper = createFieldWrapper(schema);
     const group = document.createElement('div');
     const inlineTypes = ['text', 'url', 'number', 'toggle', 'select'];
-    const isSimple = schema.fields && schema.fields.length <= 4 &&
+    const isSimple = schema.inline !== false && schema.fields && schema.fields.length <= 4 &&
         schema.fields.every(f => inlineTypes.includes(f.type));
 
     group.className = isSimple ? 'editor-inline-object' : 'editor-object-group';
