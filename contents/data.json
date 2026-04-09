@@ -38,8 +38,8 @@
     },
     "news": [
         {
-            "date": "2026.02",
-            "content": "One paper got accepted by CVPR 2026!",
+            "date": "2026.04",
+            "content": "One paper got accepted by CVPR 2026, as an \"oral\" paper!",
             "bold": false,
             "annotations": {}
         },
@@ -166,7 +166,7 @@
             }
         ],
         "services": {
-            "conference_reviewer": "CVPR(2026)",
+            "conference_reviewer": "CVPR(2026), ECCV(2026)",
             "journal_reviewer": "<i>ACM Transactions on Graphics</i> (ToG)"
         }
     },
@@ -200,6 +200,6 @@
         "Qixing Huang": "https://www.cs.utexas.edu/~huangqx/"
     },
     "footer": {
-        "lastUpdate": "2026.03.27"
+        "lastUpdate": "2026.04.09"
     }
 }
