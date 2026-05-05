@@ -83,3 +83,7 @@ iro-notice a {
     text-decoration: none;
     font-style: italic;
 }
+
+.news-item {
+    margin-left: 2em;
+}

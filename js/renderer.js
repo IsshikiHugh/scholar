@@ -95,7 +95,7 @@ function renderNews(news) {
     const items = news.map(item => {
         let content = renderNewsContent(item.content, item.annotations);
         if (item.bold) content = `<b>${content}</b>`;
-        return `        <li>\n            [${item.date}] ${content}\n        </li>`;
+        return `        <li class="news-item">\n            [${item.date}] ${content}\n        </li>`;
     }).join('\n');
 
     return `<iro-section>
@@ -186,7 +186,7 @@ ${internItems}
 
 function renderProjects(projects) {
     const items = projects.map(p =>
-        `        <li>\n            [ <b><a href="${p.url}" target="_blank">${p.name}</a></b> ]\n            ${p.description}\n        </li>`
+        `        <li class="news-item">\n            [ <b><a href="${p.url}" target="_blank">${p.name}</a></b> ]\n            ${p.description}\n        </li>`
     ).join('\n');
 
     return `<iro-section>
