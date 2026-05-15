@@ -180,11 +180,6 @@
             "name": "ExpOven",
             "url": "https://github.com/IsshikiHugh/ExpOven",
             "description": "Python package & CLI for experiments notification."
-        },
-        {
-            "name": "Isshiki修's Notebook",
-            "url": "https://note.isshikih.top",
-            "description": "My personal notebooks written in Chinese, converging high-caliber notes and tutorials on various CS subjects. Popular among CS students at Zhejiang University. (180k+ page views until Mar. 2025.)"
         }
     ],
     "connections": {
