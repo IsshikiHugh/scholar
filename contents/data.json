@@ -39,7 +39,7 @@
     "news": [
         {
             "date": "2026.04",
-            "content": "One paper got accepted by CVPR 2026, as an \"oral\" paper!",
+            "content": "One paper got accepted by CVPR 2026, as an \"oral\" and \"award candidate\" paper!",
             "bold": false,
             "annotations": {}
         },
@@ -195,6 +195,6 @@
         "Qixing Huang": "https://www.cs.utexas.edu/~huangqx/"
     },
     "footer": {
-        "lastUpdate": "2026.04.09"
+        "lastUpdate": "2026.05.16"
     }
 }
