@@ -745,14 +745,61 @@ function loadData(json) {
 
 async function copyJSON() {
     const jsonStr = JSON.stringify(editorState, null, 4) + '\n';
+
+    if (navigator.clipboard && window.isSecureContext) {
+        try {
+            await navigator.clipboard.writeText(jsonStr);
+            hasUnsavedChanges = false;
+            showToast('Copied to clipboard');
+            return;
+        } catch (err) {
+            console.error('Clipboard API failed, falling back:', err);
+        }
+    }
+
+    // Fallback for non-secure contexts (file://, LAN IP, etc.)
+    const ta = document.createElement('textarea');
+    ta.value = jsonStr;
+    ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;';
+    document.body.appendChild(ta);
+    ta.select();
+    let ok = false;
     try {
-        await navigator.clipboard.writeText(jsonStr);
+        ok = document.execCommand('copy');
+    } catch (err) {
+        console.error('execCommand copy failed:', err);
+    }
+    document.body.removeChild(ta);
+
+    if (ok) {
         hasUnsavedChanges = false;
         showToast('Copied to clipboard');
-    } catch (err) {
-        console.error('Clipboard write failed:', err);
-        alert('Failed to copy to clipboard.');
+    } else {
+        promptManualCopy(jsonStr);
     }
+}
+
+function promptManualCopy(jsonStr) {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:300;display:flex;align-items:center;justify-content:center;';
+    const box = document.createElement('div');
+    box.style.cssText = 'background:var(--iro-bg-color,#fff);color:var(--iro-text-color,#000);padding:20px;border-radius:6px;max-width:80vw;max-height:80vh;display:flex;flex-direction:column;gap:10px;';
+    const msg = document.createElement('div');
+    msg.textContent = 'Clipboard unavailable (page is not in a secure context). Press Cmd/Ctrl+C to copy, then Esc to close.';
+    const ta = document.createElement('textarea');
+    ta.value = jsonStr;
+    ta.style.cssText = 'width:60vw;height:50vh;font-family:monospace;font-size:12px;';
+    const close = () => document.body.removeChild(overlay);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', function onKey(e) {
+        if (e.key === 'Escape') { close(); document.removeEventListener('keydown', onKey); }
+    });
+    box.appendChild(msg);
+    box.appendChild(ta);
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+    ta.focus();
+    ta.select();
 }
 
 function showToast(message) {
