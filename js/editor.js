@@ -340,6 +340,7 @@ function renderArrayField(schema, value, path) {
     if (schema.collapsible) {
         const collapseWrapper = document.createElement('div');
         collapseWrapper.className = 'editor-array-collapsible collapsed';
+        collapseWrapper.dataset.path = path;
 
         const collapseHeader = document.createElement('div');
         collapseHeader.className = 'editor-array-collapse-header';
@@ -436,6 +437,7 @@ function createArrayItem(schema, item, arrayPath, index, totalCount, isSimple, i
     // Complex/object item: collapsible card
     const itemEl = document.createElement('div');
     itemEl.className = isComplex ? 'editor-array-item collapsed' : 'editor-array-item';
+    itemEl.dataset.path = itemPath;
 
     if (showIndex) {
         const idx = document.createElement('span');
@@ -721,9 +723,38 @@ function moveArrayItem(path, fromIndex, toIndex) {
 function rebuildCurrentSection() {
     if (activeSection) {
         const section = EDITOR_SCHEMA.find(s => s.key === activeSection);
-        if (section) buildSectionForm(section);
+        if (section) {
+            const expanded = captureExpandedPaths();
+            buildSectionForm(section);
+            restoreExpandedPaths(expanded);
+        }
     }
     markDirty();
+}
+
+function captureExpandedPaths() {
+    const paths = new Set();
+    const form = document.getElementById('editor-form');
+    if (!form) return paths;
+    form.querySelectorAll('.editor-array-item[data-path]:not(.collapsed)').forEach(el => {
+        paths.add('item:' + el.dataset.path);
+    });
+    form.querySelectorAll('.editor-array-collapsible[data-path]:not(.collapsed)').forEach(el => {
+        paths.add('arr:' + el.dataset.path);
+    });
+    return paths;
+}
+
+function restoreExpandedPaths(paths) {
+    if (!paths || paths.size === 0) return;
+    const form = document.getElementById('editor-form');
+    if (!form) return;
+    form.querySelectorAll('.editor-array-item[data-path]').forEach(el => {
+        if (paths.has('item:' + el.dataset.path)) el.classList.remove('collapsed');
+    });
+    form.querySelectorAll('.editor-array-collapsible[data-path]').forEach(el => {
+        if (paths.has('arr:' + el.dataset.path)) el.classList.remove('collapsed');
+    });
 }
 
 function markDirty() {
