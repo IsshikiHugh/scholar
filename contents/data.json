@@ -39,9 +39,11 @@
     "news": [
         {
             "date": "2026.04",
-            "content": "One paper got accepted by CVPR 2026, as an \"oral\" and \"award candidate\" paper!",
+            "content": "{HTD-Refine} got accepted by CVPR 2026, as an \"oral\" and \"award candidate\" paper!",
             "bold": false,
-            "annotations": {}
+            "annotations": {
+                "HTD-Refine": "HTD-Refine: Natural Human Motion Recovery by Aligning High-Order Temporal Dynamics from Monocular Videos"
+            }
         },
         {
             "date": "2025.08",

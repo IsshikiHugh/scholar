@@ -5,7 +5,7 @@ function renderAnnotation(text, tooltip) {
 
 function renderNewsContent(content, annotations) {
     if (!annotations) return content;
-    return content.replace(/\{(\w+)\}/g, (_, token) => {
+    return content.replace(/\{([\w-]+)\}/g, (_, token) => {
         const tooltip = annotations[token];
         if (tooltip) return renderAnnotation(token, tooltip);
         return token;
