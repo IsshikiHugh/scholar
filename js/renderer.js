@@ -82,7 +82,7 @@ ${bioHtml}
         </div>
         <!-- Right Part: Avatar -->
         <div style="flex: 3; margin-left: 20px;">
-            <img src="${profile.avatar}" alt="${profile.name.map(n => n.text).join(' ')}" style="max-width: 100%; height: auto;">
+            <img src="${profile.avatar}" alt="${profile.name.map(n => n.text).join(' ')}" style="max-width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 50%; border: 4px solid var(--iro-theme-color-lighter); box-sizing: border-box;">
         </div>
     </div>
 
