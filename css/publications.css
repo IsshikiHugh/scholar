@@ -85,8 +85,8 @@
     color: var(--iro-pub-emphasis-color);
     font-weight: 700;
     position: relative;
-    overflow: hidden;
     display: inline-block;
+    clip-path: inset(0);
 }
 
 .pub-emph::before {
