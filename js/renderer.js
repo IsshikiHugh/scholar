@@ -115,8 +115,8 @@ function renderPublications(pubs) {
             ? `<video class="pub-teaser" src="${pub.teaser.src}" muted="true" autoplay="true" loop="True" width="100%"></video>`
             : `<img class="pub-teaser" src="${pub.teaser.src}" width="100%">`;
 
-        const emphasisLine = pub.emphasis
-            ? `\n                <span class="pub-emph">${pub.emphasis}</span>`
+        const tagsLine = (pub.tags && pub.tags.length)
+            ? '\n                ' + pub.tags.map(t => `<span class="pub-tag">${t}</span>`).join('\n                ')
             : '';
 
         return `        <tr class="pub-one">
@@ -132,7 +132,7 @@ function renderPublications(pubs) {
                     ${renderPubAuthors(pub.authors)}
                 </span>
                 <br>
-                <i>${pub.venue}</i>, ${pub.year} &nbsp;${emphasisLine}
+                <span class="pub-venue"><i>${pub.venue}</i>, ${pub.year}</span>${tagsLine}
                 <br>
                 ${renderPubLinks(pub.links, pub.repo_id)}
             </td>

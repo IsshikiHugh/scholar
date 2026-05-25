@@ -150,7 +150,15 @@ const EDITOR_SCHEMA = [
                         },
                         { key: "venue", label: "Venue", type: "text", required: true, placeholder: "e.g. CVPR" },
                         { key: "year", label: "Year", type: "number", required: true },
-                        { key: "emphasis", label: "Emphasis", type: "text", required: false, placeholder: "e.g. (Oral Presentation)" },
+                        {
+                            key: "tags",
+                            label: "Tags",
+                            type: "array",
+                            required: false,
+                            addPosition: "end",
+                            description: "Pill-shaped tags shown after the venue (e.g. Oral Presentation, Award Candidate).",
+                            itemSchema: { type: "text", placeholder: "e.g. Oral Presentation" }
+                        },
                         { key: "links", label: "Links", type: "keyvalue", required: false, description: "Label → URL pairs." },
                         { key: "repo_id", label: "Repo ID", type: "text", required: false, placeholder: "user/repo" }
                     ]

@@ -68,7 +68,7 @@ This document covers everything needed to understand, use, and extend the conten
 | `publications[].authors[].marker` | `string` | no | Superscript marker (e.g. "*" for equal contribution) |
 | `publications[].venue` | `string` | yes | Conference/journal name |
 | `publications[].year` | `number` | yes | Publication year |
-| `publications[].emphasis` | `string` | no | Highlighted text (e.g. "(Oral Presentation)") |
+| `publications[].tags` | `Array<string>` | no | Pill-shaped tags shown after the venue (e.g. `["Oral Presentation", "Award Candidate"]`) |
 | `publications[].links` | `Object<string, string>` | no | Map of link label to URL |
 | `publications[].repo_id` | `string` | no | GitHub repo ID (e.g. "user/repo") for stars badge |
 
@@ -354,7 +354,7 @@ Complete mapping from data.json fields to renderer functions and editor schema.
 | `publications[].authors[].marker` | `renderPubAuthors()` | Publications | `text` |
 | `publications[].venue` | `renderPublications()` | Publications | `text` |
 | `publications[].year` | `renderPublications()` | Publications | `number` |
-| `publications[].emphasis` | `renderPublications()` | Publications | `text` |
+| `publications[].tags` | `renderPublications()` | Publications | `array<text>` |
 | `publications[].links` | `renderPubLinks()` | Publications | `keyvalue` |
 | `publications[].repo_id` | `renderPubLinks()` | Publications | `text` |
 | `experiences.education` | `renderExperiences()` | Experiences | `array<object>` (collapsible) |

@@ -67,6 +67,47 @@
         {
             "teaser": {
                 "type": "video",
+                "src": "/assets/teasers/HTD-Refine.mp4"
+            },
+            "title": "HTD-Refine: Natural Human Motion Recovery by Aligning High-Order Temporal Dynamics from Monocular Videos",
+            "authors": [
+                {
+                    "name": "Dingkun Wei",
+                    "marker": "*"
+                },
+                {
+                    "name": "Zehong Shen",
+                    "marker": "*"
+                },
+                {
+                    "name": "Yan Xia",
+                    "marker": ""
+                },
+                {
+                    "name": "Georgios Pavlakos",
+                    "marker": ""
+                },
+                {
+                    "name": "Yujun Shen",
+                    "marker": ""
+                },
+                {
+                    "name": "Xiaowei Zhou",
+                    "marker": ""
+                }
+            ],
+            "venue": "CVPR",
+            "year": 2026,
+            "tags": [
+                "Oral Presentation",
+                "Award Candidate"
+            ],
+            "links": {},
+            "repo_id": ""
+        },
+        {
+            "teaser": {
+                "type": "video",
                 "src": "/assets/teasers/HSMR.mp4"
             },
             "title": "Reconstructing Humans with a Biomechanically Accurate Skeleton",
@@ -89,7 +130,9 @@
             ],
             "venue": "CVPR",
             "year": 2025,
-            "emphasis": "(Oral Presentation)",
+            "tags": [
+                "Oral Presentation"
+            ],
             "links": {
                 "project page": "https://isshikihugh.github.io/HSMR/",
                 "arXiv": "https://arxiv.org/abs/2503.21751",
@@ -192,9 +235,11 @@
         "Xiaowei Zhou": "https://www.xzhou.me/",
         "Georgios Pavlakos": "https://geopavlakos.github.io/",
         "Etienne Vouga": "https://www.cs.utexas.edu/~evouga/",
-        "Qixing Huang": "https://www.cs.utexas.edu/~huangqx/"
+        "Qixing Huang": "https://www.cs.utexas.edu/~huangqx/",
+        "Dingkun Wei": "https://kune1008.github.io/",
+        "Yujun Shen": "https://shenyujun.github.io/"
     },
     "footer": {
-        "lastUpdate": "2026.05.16"
+        "lastUpdate": "2026.05.24"
     }
 }
