@@ -121,6 +121,8 @@
     opacity: 0.75;
     transition: box-shadow var(--pub-hover-animation-duration);
     animation: pub-tag-shine 4s infinite;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .pub-one:hover .pub-tag {
