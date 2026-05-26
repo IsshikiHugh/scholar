@@ -104,7 +104,9 @@
                 "Oral Presentation",
                 "Award Candidate"
             ],
-            "links": {},
+            "links": {
+                "project page": "https://zju3dv.github.io/htd-refine"
+            },
             "repo_id": ""
         },
         {
@@ -186,7 +188,8 @@
                 "arXiv": "https://arxiv.org/abs/2409.06662",
                 "code": "https://github.com/zju3dv/GVHMR"
             },
-            "repo_id": "zju3dv/GVHMR"
+            "repo_id": "zju3dv/GVHMR",
+            "tags": []
         }
     ],
     "experiences": {
@@ -242,6 +245,6 @@
         "Yujun Shen": "https://shenyujun.github.io/"
     },
     "footer": {
-        "lastUpdate": "2026.05.24"
+        "lastUpdate": "2026.05.26"
     }
 }
