@@ -105,7 +105,8 @@
                 "Award Candidate"
             ],
             "links": {
-                "project page": "https://zju3dv.github.io/htd-refine"
+                "project page": "https://zju3dv.github.io/htd-refine",
+                "arXiv": "https://arxiv.org/abs/2605.26879"
             },
             "repo_id": ""
         },
