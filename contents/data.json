@@ -42,7 +42,7 @@
             "content": "{HTD-Refine} got accepted by CVPR 2026, as an \"oral\" and \"award candidate\" paper!",
             "bold": false,
             "annotations": {
-                "HTD-Refine": "HTD-Refine: Natural Human Motion Recovery by Aligning High-Order Temporal Dynamics from Monocular Videos"
+                "HTD-Refine": "Natural Human Motion Recovery by Aligning High-Order Temporal Dynamics from Monocular Videos"
             }
         },
         {
@@ -71,7 +71,7 @@
                 "type": "video",
                 "src": "/assets/teasers/HTD-Refine.mp4"
             },
-            "title": "HTD-Refine: Natural Human Motion Recovery by Aligning High-Order Temporal Dynamics from Monocular Videos",
+            "title": "Natural Human Motion Recovery by Aligning High-Order Temporal Dynamics from Monocular Videos",
             "authors": [
                 {
                     "name": "Dingkun Wei",
