@@ -44,8 +44,6 @@ function renderNavNotice() {
     <a href="#pub"> Pub </a>
     /
     <a href="#exp"> Exp </a>
-    /
-    <a href="#cool"> Cool </a>
 </iro-notice>`;
 }
 
@@ -184,21 +182,6 @@ ${internItems}
 </iro-section>`;
 }
 
-function renderProjects(projects) {
-    const items = projects.map(p =>
-        `        <li class="news-item">\n            [ <b><a href="${p.url}" target="_blank">${p.name}</a></b> ]\n            ${p.description}\n        </li>`
-    ).join('\n');
-
-    return `<iro-section>
-    <iro-section-head id="cool"> Cool Stuff </iro-section-head>
-
-    <p>
-${items}
-    </p>
-
-</iro-section>`;
-}
-
 function renderFooter(footer) {
     return `<iro-notice> Last Update: ${footer.lastUpdate} </iro-notice>
 <iro-notice> Designed by <a href="https://scholar.isshikih.top/">Yan XIA</a> @ <a href="https://github.com/IsshikiHugh/scholar">IsshikiHugh/scholar</a> </iro-notice>`;
@@ -220,8 +203,6 @@ function renderHome(data) {
         '',
         '',
         renderExperiences(data.experiences),
-        '',
-        renderProjects(data.projects),
         '',
         renderFooter(data.footer),
     ].join('\n');

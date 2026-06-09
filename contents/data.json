@@ -219,18 +219,6 @@
             "journal_reviewer": "<i>ACM Transactions on Graphics</i> (ToG)"
         }
     },
-    "projects": [
-        {
-            "name": "LearningHumans",
-            "url": "https://github.com/IsshikiHugh/LearningHumans",
-            "description": "Jupyter notebooks containing code snippets for understanding common techniques for virtual humans."
-        },
-        {
-            "name": "ExpOven",
-            "url": "https://github.com/IsshikiHugh/ExpOven",
-            "description": "Python package & CLI for experiments notification."
-        }
-    ],
     "connections": {
         "Zehong Shen": "https://zehongs.github.io/",
         "Huaijin Pi": "https://phj128.github.io/",

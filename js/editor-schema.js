@@ -224,27 +224,6 @@ const EDITOR_SCHEMA = [
         ]
     },
     {
-        key: "projects",
-        label: "Cool Stuff",
-        renderer: "renderProjects",
-        fields: [
-            {
-                key: "_self",
-                type: "array",
-                description: "Side projects and resources.",
-                itemSchema: {
-                    type: "object",
-                    labelKey: "name",
-                    fields: [
-                        { key: "name", label: "Name", type: "text", required: true },
-                        { key: "url", label: "URL", type: "url", required: true },
-                        { key: "description", label: "Description", type: "textarea", required: true }
-                    ]
-                }
-            }
-        ]
-    },
-    {
         key: "connections",
         label: "Connections",
         renderer: null,
