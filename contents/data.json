@@ -215,7 +215,7 @@
             }
         ],
         "services": {
-            "conference_reviewer": "CVPR(2026), ECCV(2026)",
+            "conference_reviewer": "CVPR (2026), ECCV (2026), NeurIPS (2026)",
             "journal_reviewer": "<i>ACM Transactions on Graphics</i> (ToG)"
         }
     },
@@ -246,6 +246,6 @@
         "Yujun Shen": "https://shenyujun.github.io/"
     },
     "footer": {
-        "lastUpdate": "2026.05.26"
+        "lastUpdate": "2026.06.09"
     }
 }
