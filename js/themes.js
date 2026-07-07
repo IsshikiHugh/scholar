@@ -11,7 +11,6 @@ function getThemeFromCookie() {
     for (const cookie of cookies) {
         const [key, value] = cookie.split("=");
         if (key === "IRO_THEME") return value;
-        console.log(key, value);
     }
     return defaultTheme;
 }

@@ -24,6 +24,7 @@ function renderPubAuthors(authors) {
 }
 
 function renderPubLinks(links, repo_id) {
+    links = links || {};
     const parts = [];
     const entries = Object.entries(links);
     entries.forEach(([label, url], i) => {
@@ -59,7 +60,7 @@ function renderProfile(profile) {
     return `<iro-section>
     <a id="top"></a>
 
-    <div style="display: flex; align-items: center;">
+    <div class="profile-row" style="display: flex; align-items: center;">
         <!-- Left Part: Description -->
         <div style="flex: 7;">
             <center>
@@ -79,7 +80,7 @@ function renderProfile(profile) {
 ${bioHtml}
         </div>
         <!-- Right Part: Avatar -->
-        <div style="flex: 3; margin-left: 20px;">
+        <div class="profile-avatar" style="flex: 3; margin-left: 20px;">
             <img src="${profile.avatar}" alt="${profile.name.map(n => n.text).join(' ')}" style="max-width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 50%; border: 4px solid var(--iro-theme-color-lighter); box-sizing: border-box;">
         </div>
     </div>

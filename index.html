@@ -38,7 +38,6 @@
         <div class="navbar">
             <a href="#" onclick="loadHome()"> Home </a>
             <a href="#" onclick="loadContent('theme')"> Theme </a>
-            <a href="#" onclick=""> Coming </a>
         </div>
 
         <div class="content" id="content-main">
@@ -46,21 +45,6 @@
         </div>
 
         <script>
-            function enableAsyncModifier() {
-                const interval = 1;
-                const iterMax = 5000; // Check for five seconds.
-                let iterCnt = 0;
-                const intervalId = setInterval(() => {
-                    iterCnt++;
-                    console.log('Checking...');
-                    let connectionLinkAdded = addConnectionLink(document.getElementById('content-main'));
-
-                    if (connectionLinkAdded || iterCnt >= iterMax) {
-                        clearInterval(intervalId);
-                    }
-                }, interval);
-            }
-
             loadHome();
             initTheme();
         </script>

@@ -87,3 +87,25 @@ iro-notice a {
 .news-item {
     margin-left: 2em;
 }
+
+@media (max-width: 640px) {
+    .content {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    iro-section {
+        padding: 16px 18px;
+    }
+
+    /* Stack profile description above avatar on narrow screens. */
+    .profile-row {
+        flex-direction: column;
+    }
+
+    .profile-avatar {
+        margin-left: 0 !important;
+        margin-top: 16px;
+        max-width: 180px;
+    }
+}

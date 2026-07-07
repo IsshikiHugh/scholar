@@ -1,13 +1,25 @@
 let ConnectionsDict = {};
 
 
+function escapeRegExp(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 function addConnectionLink(node) {
     let connectionLinkAdded = false;
     // console.log('Connection', node);
     if (node.nodeType === Node.TEXT_NODE) {
+        const names = Object.keys(ConnectionsDict);
+        if (names.length === 0) return connectionLinkAdded;
         let content = node.nodeValue;
-        // Match all connections.
-        const regex = new RegExp(`\\b(${Object.keys(ConnectionsDict).join('|')})\\b`, 'g');
+        // Match all connections. Escape regex metacharacters in names, and sort
+        // by length (desc) so a longer name wins over a shorter prefix of it.
+        const alternation = names
+            .slice()
+            .sort((a, b) => b.length - a.length)
+            .map(escapeRegExp)
+            .join('|');
+        const regex = new RegExp(`\\b(${alternation})\\b`, 'g');
         const matches = content.match(regex);
         if (matches) {
             const parent = node.parentNode;

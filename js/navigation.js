@@ -1,6 +1,5 @@
 
 function loadContent(file) {
-    console.log('Loading content:', file);
     // Load the content from the file.
     if (file != '#') {
         fetch('html/' + file + '.html')
@@ -13,7 +12,6 @@ function loadContent(file) {
 }
 
 function loadHome() {
-    console.log('Loading home from JSON...');
     fetch('contents/data.json')
         .then(response => response.json())
         .then(data => {

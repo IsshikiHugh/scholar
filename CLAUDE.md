@@ -27,7 +27,7 @@ Deployment is direct push to `main` — GitHub Pages serves from the repo root.
 **SPA-like routing without a framework:**
 - `index.html` is the shell; non-home pages live in `html/` as HTML partials (e.g. `html/theme.html`)
 - `js/navigation.js` — `loadContent(file)` fetches partials; `loadHome()` renders from JSON
-- URL hash navigation (`#news`, `#pub`, `#exp`, `#cool`) for in-page section linking
+- In-page section anchors (`#news`, `#pub`, `#exp`) are plain fragment jumps to section IDs — there is no hash-router, just native anchor scrolling
 
 **Custom HTML elements (CSS-styled, not Web Components):**
 - `<iro-section>`, `<iro-section-head>`, `<iro-notice>` — styled via `css/page.css`
@@ -39,7 +39,13 @@ Deployment is direct push to `main` — GitHub Pages serves from the repo root.
 
 **Auto-linking (`js/connection.js`):**
 - `ConnectionsDict` populated at runtime from `connections` in `data.json`
-- `addConnectionLink()` scans text nodes and auto-wraps matching names in styled `<a>` tags
+- `addConnectionLink()` scans text nodes and auto-wraps matching names in styled `<a>` tags (regex metacharacters in names are escaped; longer names match before shorter prefixes)
+
+**Content editor (`editor.html`, separate from the main site):**
+- Schema-driven form UI for editing `data.json` without touching JSON by hand
+- `js/editor-schema.js` (`EDITOR_SCHEMA`) declaratively describes every field; `js/editor.js` auto-generates the form and a live preview by reusing `renderHome()` from `renderer.js`
+- Output is copied to clipboard via "Copy JSON" — the editor does **not** write files; paste the result back into `contents/data.json`
+- Styled by `css/editor.css`. See `docs/EDITOR.md` for the field-type reference and extension guide
 
 ## Key Files
 
@@ -54,4 +60,9 @@ Deployment is direct push to `main` — GitHub Pages serves from the repo root.
 | `css/colors.css` | Theme color variable definitions |
 | `css/page.css` | Layout, custom elements, section styling |
 | `css/publications.css` | Publication entry hover animations, teaser videos |
+| `editor.html` | Content editor shell (schema-driven form + live preview) |
+| `js/editor-schema.js` | `EDITOR_SCHEMA` — declarative field definitions for the editor |
+| `js/editor.js` | Editor engine: form generation, state, live preview, Copy JSON |
+| `css/editor.css` | Editor UI styling (only file with responsive `@media` rules) |
+| `docs/EDITOR.md` | Editor architecture & extension guide |
 | `CNAME` | Custom domain config |

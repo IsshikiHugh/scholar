@@ -378,7 +378,8 @@ function getItemSummary(itemSchema, item) {
             ? '[' + parts[0] + '] ' + parts.slice(1).join(' ')
             : parts[0];
         // Strip annotation braces like {TOKEN} → TOKEN
-        text = text.replace(/\{(\w+)\}/g, '$1');
+        // Token charset must match renderNewsContent() in renderer.js ([\w-]+).
+        text = text.replace(/\{([\w-]+)\}/g, '$1');
         if (text.length > 80) text = text.slice(0, 77) + '...';
         return escapeHtml(text);
     }
