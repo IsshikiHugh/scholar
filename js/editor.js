@@ -514,42 +514,61 @@ function createArrayItem(schema, item, arrayPath, index, totalCount, isSimple, i
     return itemEl;
 }
 
+let openMenu = null;
+
+function closeOpenMenu() {
+    if (openMenu) {
+        openMenu.classList.remove('open');
+        openMenu = null;
+    }
+}
+
+document.addEventListener('click', closeOpenMenu);
+
 function createArrayControls(arrayPath, index, totalCount) {
     const controls = document.createElement('div');
     controls.className = 'editor-array-item-controls';
 
-    if (index > 0) {
-        const upBtn = document.createElement('button');
-        upBtn.textContent = '↑';
-        upBtn.title = 'Move up';
-        upBtn.addEventListener('click', () => {
-            moveArrayItem(arrayPath, index, index - 1);
-            rebuildCurrentSection();
-        });
-        controls.appendChild(upBtn);
-    }
-
-    if (index < totalCount - 1) {
-        const downBtn = document.createElement('button');
-        downBtn.textContent = '↓';
-        downBtn.title = 'Move down';
-        downBtn.addEventListener('click', () => {
-            moveArrayItem(arrayPath, index, index + 1);
-            rebuildCurrentSection();
-        });
-        controls.appendChild(downBtn);
-    }
-
-    const removeBtn = document.createElement('button');
-    removeBtn.textContent = '✕';
-    removeBtn.title = 'Remove';
-    removeBtn.style.color = 'var(--iro-pub-emphasis-color)';
-    removeBtn.addEventListener('click', () => {
-        removeArrayItem(arrayPath, index);
-        rebuildCurrentSection();
+    const trigger = document.createElement('button');
+    trigger.className = 'editor-menu-trigger';
+    trigger.textContent = '⋮';
+    trigger.title = 'Actions';
+    trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const wasOpen = controls.classList.contains('open');
+        closeOpenMenu();
+        if (!wasOpen) {
+            controls.classList.add('open');
+            openMenu = controls;
+        }
     });
-    controls.appendChild(removeBtn);
+    controls.appendChild(trigger);
 
+    const menu = document.createElement('div');
+    menu.className = 'editor-menu';
+    menu.addEventListener('click', (e) => e.stopPropagation());
+
+    const addAction = (label, action, danger) => {
+        const btn = document.createElement('button');
+        btn.className = danger ? 'editor-menu-item danger' : 'editor-menu-item';
+        btn.textContent = label;
+        btn.addEventListener('click', () => {
+            closeOpenMenu();
+            action();
+            rebuildCurrentSection();
+        });
+        menu.appendChild(btn);
+    };
+
+    if (index > 0) {
+        addAction('↑  Move up', () => moveArrayItem(arrayPath, index, index - 1));
+    }
+    if (index < totalCount - 1) {
+        addAction('↓  Move down', () => moveArrayItem(arrayPath, index, index + 1));
+    }
+    addAction('✕  Remove', () => removeArrayItem(arrayPath, index), true);
+
+    controls.appendChild(menu);
     return controls;
 }
 

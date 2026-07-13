@@ -356,25 +356,73 @@
     margin-bottom: 0;
 }
 
+/* Kebab menu holding move/remove actions */
 .editor-array-item-controls {
+    position: relative;
     display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding-top: 2px;
+    align-items: flex-start;
 }
 
-.editor-array-item-controls button {
+/* On collapsible items, line the trigger up with the header title */
+.editor-array-item:has(.editor-array-item-body) .editor-array-item-controls {
+    padding-top: 4px;
+}
+
+.editor-menu-trigger {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
     color: var(--iro-text-color-lightest);
-    padding: 2px 4px;
-    line-height: 1;
+    padding: 2px 6px;
+    line-height: 1.2;
+    border-radius: 4px;
 }
 
-.editor-array-item-controls button:hover {
+.editor-menu-trigger:hover,
+.editor-array-item-controls.open .editor-menu-trigger {
     color: var(--iro-text-color);
+    background-color: var(--iro-bg-color-darkest);
+}
+
+.editor-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 20;
+    min-width: 130px;
+    flex-direction: column;
+    padding: 4px;
+    border: 1px solid var(--iro-bg-color-darkest);
+    border-radius: 6px;
+    background-color: var(--iro-bg-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.editor-array-item-controls.open .editor-menu {
+    display: flex;
+}
+
+.editor-menu-item {
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    white-space: nowrap;
+    font-size: 13px;
+    font-family: inherit;
+    color: var(--iro-text-color);
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+.editor-menu-item:hover {
+    background-color: var(--iro-bg-color-darker);
+}
+
+.editor-menu-item.danger {
+    color: var(--iro-pub-emphasis-color);
 }
 
 /* Collapsible array items (for complex objects like publications) */
@@ -489,6 +537,11 @@
     overflow: hidden;
 }
 
+/* Let the kebab menus of inner items escape the rounded clip when expanded */
+.editor-array-collapsible:not(.collapsed) {
+    overflow: visible;
+}
+
 .editor-array-collapse-header {
     display: flex;
     justify-content: space-between;
@@ -532,8 +585,7 @@
 }
 
 .editor-array-item-simple .editor-array-item-controls {
-    flex-direction: row;
-    padding-top: 7px;
+    padding-top: 5px;
 }
 
 /* =============================================
