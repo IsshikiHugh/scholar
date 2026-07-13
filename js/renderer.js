@@ -12,6 +12,19 @@ function renderNewsContent(content, annotations) {
     });
 }
 
+// Venue list: [{ name, years: [{ year, url }] }] -> "CVPR (2026, 2027), ECCV (2026)"
+// Years with a url become subtle links; a plain string is passed through untouched.
+function renderServiceVenues(venues) {
+    if (!venues) return '';
+    if (typeof venues === 'string') return venues;
+    return venues.map(v => {
+        const years = (v.years || [])
+            .filter(y => y && y.year)
+            .map(y => y.url ? `<a class="subtle-link" href="${y.url}">${y.year}</a>` : y.year);
+        return years.length ? `${v.name} (${years.join(', ')})` : v.name;
+    }).join(', ');
+}
+
 let _myName = '';
 
 function renderPubAuthors(authors) {
@@ -177,8 +190,8 @@ ${internItems}
     </p>
 
     <p>
-        <b>Conference Reviewer</b>: ${exp.services.conference_reviewer}.<br>
-        <b>Journal Reviewer</b>: ${exp.services.journal_reviewer}.
+        <b>Conference Reviewer</b>: ${renderServiceVenues(exp.services.conference_reviewer)}.<br>
+        <b>Journal Reviewer</b>: ${renderServiceVenues(exp.services.journal_reviewer)}.
     </p>
 </iro-section>`;
 }

@@ -80,7 +80,10 @@ This document covers everything needed to understand, use, and extend the conten
 | `experiences.education[].period` | `string` | yes | Time period (e.g. "21.09-25.06") |
 | `experiences.education[].description` | `string` | yes | Description text |
 | `experiences.internships` | `Array<{period, description}>` | yes | Internship entries (same format) |
-| `experiences.services` | `string` | no | Conference reviewer list (e.g. "CVPR(2026)") |
+| `experiences.services.conference_reviewer` | `Array<{name, years}>` | no | One entry per conference |
+| `experiences.services.journal_reviewer` | `Array<{name, years}>` | no | One entry per journal |
+| `experiences.services.*[].name` | `string` | yes | Venue name (e.g. "CVPR") |
+| `experiences.services.*[].years` | `Array<{year, url}>` | no | Years served; a year with a `url` renders as a link |
 
 ### `projects` — Cool Stuff section
 
@@ -363,7 +366,10 @@ Complete mapping from data.json fields to renderer functions and editor schema.
 | `experiences.internships` | `renderExperiences()` | Experiences | `array<object>` (collapsible) |
 | `experiences.internships[].period` | `renderExperiences()` | Experiences | `text` |
 | `experiences.internships[].description` | `renderExperiences()` | Experiences | `textarea` |
-| `experiences.services` | `renderExperiences()` | Experiences | `text` |
+| `experiences.services.conference_reviewer` | `renderServiceVenues()` | Experiences | `array<object>` (collapsible) |
+| `experiences.services.journal_reviewer` | `renderServiceVenues()` | Experiences | `array<object>` (collapsible) |
+| `experiences.services.*[].name` | `renderServiceVenues()` | Experiences | `text` |
+| `experiences.services.*[].years` | `renderServiceVenues()` | Experiences | `array<object>` (`year` + `url`) |
 | `projects[]` | `renderProjects()` | Cool Stuff | `array<object>` |
 | `projects[].name` | `renderProjects()` | Cool Stuff | `text` |
 | `projects[].url` | `renderProjects()` | Cool Stuff | `url` |

@@ -18,6 +18,17 @@ a:hover {
     color: var(--iro-url-activate-color);
 }
 
+/* Link that stays text-colored until hovered. */
+.subtle-link {
+    color: var(--iro-text-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.subtle-link:hover {
+    color: var(--iro-url-activate-color);
+}
+
 .connection-link {
     color: var(--iro-text-color);
     text-decoration: none;

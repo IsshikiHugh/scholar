@@ -206,18 +206,56 @@ const EDITOR_SCHEMA = [
                     {
                         key: "conference_reviewer",
                         label: "Conference Reviewer",
-                        type: "text",
-                        required: false,
-                        placeholder: "e.g. CVPR(2026)",
-                        description: "Comma-separated list of conferences."
+                        type: "array",
+                        addPosition: "end",
+                        description: "One entry per conference, with a year sub-entry per year served. A year with a URL becomes a link.",
+                        itemSchema: {
+                            type: "object",
+                            labelKey: "name",
+                            fields: [
+                                { key: "name", label: "Conference", type: "text", required: true, placeholder: "e.g. CVPR" },
+                                {
+                                    key: "years",
+                                    label: "Years",
+                                    type: "array",
+                                    addPosition: "end",
+                                    itemSchema: {
+                                        type: "object",
+                                        fields: [
+                                            { key: "year", label: "Year", type: "text", required: true, placeholder: "2026", flex: 1 },
+                                            { key: "url", label: "URL", type: "url", required: false, placeholder: "https://... (optional)", flex: 4 }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
                     },
                     {
                         key: "journal_reviewer",
                         label: "Journal Reviewer",
-                        type: "text",
-                        required: false,
-                        placeholder: "e.g. TPAMI",
-                        description: "Comma-separated list of journals."
+                        type: "array",
+                        addPosition: "end",
+                        description: "One entry per journal, with an optional year sub-entry per year served.",
+                        itemSchema: {
+                            type: "object",
+                            labelKey: "name",
+                            fields: [
+                                { key: "name", label: "Journal", type: "text", required: true, placeholder: "e.g. TPAMI" },
+                                {
+                                    key: "years",
+                                    label: "Years",
+                                    type: "array",
+                                    addPosition: "end",
+                                    itemSchema: {
+                                        type: "object",
+                                        fields: [
+                                            { key: "year", label: "Year", type: "text", required: true, placeholder: "2026", flex: 1 },
+                                            { key: "url", label: "URL", type: "url", required: false, placeholder: "https://... (optional)", flex: 4 }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
                     }
                 ]
             }

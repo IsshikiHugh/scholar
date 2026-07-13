@@ -215,8 +215,50 @@
             }
         ],
         "services": {
-            "conference_reviewer": "CVPR (2026), ECCV (2026), NeurIPS (2026), CoRL (2026)",
-            "journal_reviewer": "<i>ACM Transactions on Graphics</i> (ToG)"
+            "conference_reviewer": [
+                {
+                    "name": "CVPR",
+                    "years": [
+                        {
+                            "year": "2026",
+                            "url": "https://cvpr.thecvf.com/Conferences/2026"
+                        }
+                    ]
+                },
+                {
+                    "name": "ECCV",
+                    "years": [
+                        {
+                            "year": "2026",
+                            "url": "https://eccv.ecva.net/Conferences/2026"
+                        }
+                    ]
+                },
+                {
+                    "name": "NeurIPS",
+                    "years": [
+                        {
+                            "year": "2026",
+                            "url": "https://neurips.cc/Conferences/2026"
+                        }
+                    ]
+                },
+                {
+                    "name": "CoRL",
+                    "years": [
+                        {
+                            "year": "2026",
+                            "url": "https://2026.corl.org/"
+                        }
+                    ]
+                }
+            ],
+            "journal_reviewer": [
+                {
+                    "name": "<i>ACM Transactions on Graphics</i> (ToG)",
+                    "years": []
+                }
+            ]
         }
     },
     "connections": {
