@@ -89,37 +89,6 @@ const EDITOR_SCHEMA = [
         ]
     },
     {
-        key: "site",
-        label: "Site / SEO",
-        renderer: null,
-        fields: [
-            {
-                key: "url",
-                label: "Site URL",
-                type: "url",
-                required: false,
-                placeholder: "https://you.github.io",
-                description: "Canonical base URL. Used for og:url, the canonical link, and to resolve the avatar into an absolute og:image."
-            },
-            {
-                key: "description",
-                label: "Meta Description",
-                type: "textarea",
-                required: false,
-                description: "Search / social-card description. Falls back to the first bio paragraph when empty."
-            },
-            {
-                key: "keywords",
-                label: "Keywords",
-                type: "array",
-                required: false,
-                addPosition: "end",
-                description: "SEO keywords emitted as a <meta name=\"keywords\"> tag.",
-                itemSchema: { type: "text", placeholder: "e.g. 3D Vision" }
-            }
-        ]
-    },
-    {
         key: "news",
         label: "News",
         renderer: "renderNews",

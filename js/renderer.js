@@ -265,20 +265,14 @@ function _setPropMeta(property, content) {
 function applyMeta(data) {
     const meta = MetaKit.computeMeta(data, location.origin + location.pathname);
 
-    if (meta.name) document.title = meta.name;
-    _setNamedMeta('description', meta.description);
-    if (meta.keywords.length) _setNamedMeta('keywords', meta.keywords.join(', '));
+    if (meta.title) document.title = meta.title;
 
     _setPropMeta('og:type', 'profile');
-    _setPropMeta('og:title', meta.name);
-    _setPropMeta('og:description', meta.description);
+    _setPropMeta('og:title', meta.title);
     _setPropMeta('og:url', meta.url);
-    _setPropMeta('og:image', meta.image);
 
     _setNamedMeta('twitter:card', 'summary');
-    _setNamedMeta('twitter:title', meta.name);
-    _setNamedMeta('twitter:description', meta.description);
-    _setNamedMeta('twitter:image', meta.image);
+    _setNamedMeta('twitter:title', meta.title);
 
     if (meta.url) {
         const link = _upsertHeadEl('link[rel="canonical"]', () => {

@@ -36,20 +36,6 @@
             }
         ]
     },
-    "site": {
-        "url": "https://scholar.isshikih.top",
-        "description": "Yan Xia is a first-year CS PhD student at UT Austin working on 3D Vision and Computer Graphics, with a focus on physically plausible 4D perception and human-centered modeling.",
-        "keywords": [
-            "Yan Xia",
-            "夏彦",
-            "3D Vision",
-            "Computer Graphics",
-            "Human Motion Recovery",
-            "4D Perception",
-            "UT Austin",
-            "PhD"
-        ]
-    },
     "news": [
         {
             "date": "2026.04",

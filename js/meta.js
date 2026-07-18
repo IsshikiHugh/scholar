@@ -1,9 +1,10 @@
 /**
  * meta.js — Shared metadata logic (browser + Node).
  *
- * Single source of truth for the document title, SEO/description, Open Graph /
- * Twitter cards, canonical URL, and schema.org Person JSON-LD, all derived from
- * contents/data.json.
+ * Single source of truth for the document title, Open Graph / Twitter title,
+ * canonical URL, and a minimal schema.org Person JSON-LD block, all derived
+ * from the existing contents/data.json fields (no metadata-only keys are added
+ * to data.json).
  *
  *   - In the browser, `applyMeta()` in renderer.js uses `computeMeta()` and
  *     injects the tags into <head> at runtime (picked up by JS-rendering
@@ -22,41 +23,19 @@
     }
 })(typeof self !== 'undefined' ? self : this, function () {
 
-    // Strip any HTML tags and collapse whitespace — descriptions stay plain text.
-    function stripHtml(str) {
-        return String(str == null ? '' : str)
-            .replace(/<[^>]*>/g, '')
-            .replace(/\s+/g, ' ')
-            .trim();
-    }
-
-    // Resolve a possibly-relative path (e.g. "/assets/avatar.png") against the
-    // site's base URL, so og:image is an absolute URL as crawlers require.
-    function absoluteUrl(base, path) {
-        if (!path) return '';
-        if (/^https?:\/\//.test(path)) return path;
-        if (!base) return path;
-        return String(base).replace(/\/+$/, '') + '/' + String(path).replace(/^\/+/, '');
-    }
-
-    // Derive all metadata values from data.json. `origin` is a fallback base URL
-    // used when data.site.url is absent (e.g. location.origin + pathname).
+    // Derive all metadata values from the existing data.json fields. `origin` is
+    // the base URL used for og:url / canonical — location.origin in the browser,
+    // or the CNAME domain at build time. Anything that can't be derived is empty.
     function computeMeta(data, origin) {
         data = data || {};
         const profile = data.profile || {};
-        const site = data.site || {};
 
-        const name = site.title || profile.myName || '';
-        const description = stripHtml(site.description || (profile.bio && profile.bio[0]) || '');
-        const url = site.url || origin || '';
-        const image = absoluteUrl(site.url, profile.avatar);
-        const keywords = Array.isArray(site.keywords) ? site.keywords.filter(Boolean) : [];
+        const name = profile.myName || '';
+        const title = name ? `Homepage - ${name}` : 'Homepage';
+        const url = origin || '';
         const sameAs = (profile.links || []).map(l => l && l.url).filter(Boolean);
-        const email = (profile.email && profile.email.user && profile.email.domain)
-            ? profile.email.user + '@' + profile.email.domain
-            : '';
 
-        return { name, description, url, image, keywords, sameAs, email };
+        return { name, title, url, sameAs };
     }
 
     // schema.org Person object (used for the JSON-LD block in both environments).
@@ -64,10 +43,7 @@
         const person = { '@context': 'https://schema.org', '@type': 'Person' };
         if (meta.name) person.name = meta.name;
         if (meta.url) person.url = meta.url;
-        if (meta.image) person.image = meta.image;
-        if (meta.description) person.description = meta.description;
         if (meta.sameAs.length) person.sameAs = meta.sameAs;
-        if (meta.email) person.email = 'mailto:' + meta.email;
         return person;
     }
 
@@ -84,20 +60,14 @@
         const i = indent == null ? '        ' : indent;
         const lines = [];
 
-        if (meta.name) lines.push(`<title>${escAttr(meta.name)}</title>`);
-        if (meta.description) lines.push(`<meta name="description" content="${escAttr(meta.description)}">`);
-        if (meta.keywords.length) lines.push(`<meta name="keywords" content="${escAttr(meta.keywords.join(', '))}">`);
+        if (meta.title) lines.push(`<title>${escAttr(meta.title)}</title>`);
 
         lines.push(`<meta property="og:type" content="profile">`);
-        if (meta.name) lines.push(`<meta property="og:title" content="${escAttr(meta.name)}">`);
-        if (meta.description) lines.push(`<meta property="og:description" content="${escAttr(meta.description)}">`);
+        if (meta.title) lines.push(`<meta property="og:title" content="${escAttr(meta.title)}">`);
         if (meta.url) lines.push(`<meta property="og:url" content="${escAttr(meta.url)}">`);
-        if (meta.image) lines.push(`<meta property="og:image" content="${escAttr(meta.image)}">`);
 
         lines.push(`<meta name="twitter:card" content="summary">`);
-        if (meta.name) lines.push(`<meta name="twitter:title" content="${escAttr(meta.name)}">`);
-        if (meta.description) lines.push(`<meta name="twitter:description" content="${escAttr(meta.description)}">`);
-        if (meta.image) lines.push(`<meta name="twitter:image" content="${escAttr(meta.image)}">`);
+        if (meta.title) lines.push(`<meta name="twitter:title" content="${escAttr(meta.title)}">`);
 
         if (meta.url) lines.push(`<link rel="canonical" href="${escAttr(meta.url)}">`);
 
@@ -108,5 +78,5 @@
         return lines.map(l => i + l).join('\n');
     }
 
-    return { stripHtml, absoluteUrl, computeMeta, buildPerson, buildHeadHtml };
+    return { computeMeta, buildPerson, buildHeadHtml };
 });

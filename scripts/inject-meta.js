@@ -22,13 +22,25 @@ const { computeMeta, buildHeadHtml } = require('../js/meta.js');
 const root = path.resolve(__dirname, '..');
 const dataPath = path.join(root, 'contents', 'data.json');
 const htmlPath = path.join(root, 'index.html');
+const cnamePath = path.join(root, 'CNAME');
 
 const START = '<!-- meta:auto:start -->';
 const END = '<!-- meta:auto:end -->';
 
+// Base URL for canonical / absolute og:image. Sourced from the existing CNAME
+// file so no metadata-only keys are added to data.json; left empty if absent.
+function readBaseUrl() {
+    try {
+        const host = fs.readFileSync(cnamePath, 'utf8').trim();
+        return host ? 'https://' + host.replace(/\/+$/, '') : '';
+    } catch (e) {
+        return '';
+    }
+}
+
 function main() {
     const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
-    const meta = computeMeta(data, data.site && data.site.url);
+    const meta = computeMeta(data, readBaseUrl());
     const block = buildHeadHtml(meta, '        ');
 
     let html = fs.readFileSync(htmlPath, 'utf8');
@@ -45,9 +57,8 @@ function main() {
     html = html.replace(re, `${START}\n${block}\n        ${END}`);
     fs.writeFileSync(htmlPath, html);
     console.log('Injected metadata into index.html:');
-    console.log(`  title:       ${meta.name}`);
-    console.log(`  description: ${meta.description.slice(0, 72)}${meta.description.length > 72 ? '…' : ''}`);
-    console.log(`  og:image:    ${meta.image}`);
+    console.log(`  title:  ${meta.title}`);
+    console.log(`  og:url: ${meta.url}`);
 }
 
 main();
