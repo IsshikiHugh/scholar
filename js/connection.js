@@ -53,6 +53,7 @@ function createCustomNode(name, link) {
     const a = document.createElement("a")
     a.href = link;
     a.target = "_blank";
+    a.rel = "noopener noreferrer";
     a.classList.add("connection-link");
     a.textContent = name;
     return a;

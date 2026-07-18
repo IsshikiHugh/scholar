@@ -1,0 +1,55 @@
+name: Deploy to GitHub Pages
+
+# Builds the site (injecting static SEO/social-card tags from contents/data.json)
+# and deploys it to GitHub Pages.
+#
+# One-time setup: in the repo Settings → Pages, set "Build and deployment" →
+# "Source" to "GitHub Actions" (instead of "Deploy from a branch"). Until then
+# this workflow's deploy step will not publish.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Allow this workflow to publish to Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one concurrent deployment; don't cancel an in-progress run.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Inject static SEO / social-card tags
+        run: node scripts/inject-meta.js
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,4 +1,8 @@
 
+// Attributes for every external link: open in a new tab, and drop the opener
+// reference / referrer for security and performance.
+const EXT_ATTR = 'target="_blank" rel="noopener noreferrer"';
+
 function renderAnnotation(text, tooltip) {
     return `<div class="annotation">${text}<span class="annotation-text">${tooltip}</span></div>`;
 }
@@ -20,7 +24,7 @@ function renderServiceVenues(venues) {
     return venues.map(v => {
         const years = (v.years || [])
             .filter(y => y && y.year)
-            .map(y => y.url ? `<a class="subtle-link" href="${y.url}">${y.year}</a>` : y.year);
+            .map(y => y.url ? `<a class="subtle-link" href="${y.url}" ${EXT_ATTR}>${y.year}</a>` : y.year);
         return years.length ? `${v.name} (${years.join(', ')})` : v.name;
     }).join(', ');
 }
@@ -41,12 +45,12 @@ function renderPubLinks(links, repo_id) {
     const parts = [];
     const entries = Object.entries(links);
     entries.forEach(([label, url], i) => {
-        parts.push(`<a href="${url}">${label}</a>`);
+        parts.push(`<a href="${url}" ${EXT_ATTR}>${label}</a>`);
         if (i < entries.length - 1) parts.push('\n                /\n                ');
     });
     if (repo_id) {
         const codeUrl = links['code'] || `https://github.com/${repo_id}`;
-        parts.push(`\n                <a href="${codeUrl}">\n                    <img src="https://img.shields.io/github/stars/${repo_id}?style=social" style="vertical-align:middle">\n                </a>`);
+        parts.push(`\n                <a href="${codeUrl}" ${EXT_ATTR}>\n                    <img src="https://img.shields.io/github/stars/${repo_id}?style=social" alt="GitHub stars" style="vertical-align:middle">\n                </a>`);
     }
     return parts.join('');
 }
@@ -66,40 +70,36 @@ function renderProfile(profile) {
         n => n.annotation ? renderAnnotation(n.text, n.annotation) : n.text
     ).join('\n                    ');
 
-    const linksHtml = profile.links.map(l => `<a href="${l.url}"> ${l.name} </a>`).join('\n                    ・\n                    ');
+    const linksHtml = profile.links.map(l => `<a href="${l.url}" ${EXT_ATTR}> ${l.name} </a>`).join('\n                    ・\n                    ');
 
     const bioHtml = profile.bio.map(p => `\n            <p>\n                ${p}\n            </p>`).join('');
+
+    const nameCN = profile.nameCN ? ` / ${profile.nameCN}` : '';
 
     return `<iro-section>
     <a id="top"></a>
 
-    <div class="profile-row" style="display: flex; align-items: center;">
+    <div class="profile-row">
         <!-- Left Part: Description -->
-        <div style="flex: 7;">
-            <center>
-                <font style="font-family: Times, serif;">
-                <h2 style="margin-top: 5px; margin-bottom: 0px;">
-                    ${nameAnnotations}
-                    / ${profile.nameCN}
-                </h2>
-                    ${profile.email.user}<font style="color: var(--iro-text-color-lightest)">@</font><i>${profile.email.domain}</i>
-                </font>
-            </center>
-            <center>
-                <iro-notice>
+        <div class="profile-desc">
+            <div class="profile-heading">
+                <div class="profile-title">
+                    <h2 class="profile-name">
+                        ${nameAnnotations}${nameCN}
+                    </h2>
+                    <div class="profile-email">${profile.email.user}<span class="profile-at">@</span><i>${profile.email.domain}</i></div>
+                </div>
+                <iro-notice class="profile-links">
                     ${linksHtml}
                 </iro-notice>
-            </center>
+            </div>
 ${bioHtml}
         </div>
         <!-- Right Part: Avatar -->
-        <div class="profile-avatar" style="flex: 3; margin-left: 20px;">
-            <img src="${profile.avatar}" alt="${profile.name.map(n => n.text).join(' ')}" style="max-width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 50%; border: 4px solid var(--iro-theme-color-lighter); box-sizing: border-box;">
+        <div class="profile-avatar">
+            <img class="profile-avatar-img" src="${profile.avatar}" alt="${profile.name.map(n => n.text).join(' ')}">
         </div>
     </div>
-
-
-
 </iro-section>`;
 }
 
@@ -124,8 +124,8 @@ ${items}
 function renderPublications(pubs) {
     const rows = pubs.map(pub => {
         const teaserTag = pub.teaser.type === 'video'
-            ? `<video class="pub-teaser" src="${pub.teaser.src}" muted="true" autoplay="true" loop="True" width="100%"></video>`
-            : `<img class="pub-teaser" src="${pub.teaser.src}" width="100%">`;
+            ? `<video class="pub-teaser" src="${pub.teaser.src}" muted autoplay loop playsinline preload="metadata"></video>`
+            : `<img class="pub-teaser" src="${pub.teaser.src}" alt="${pub.title}" loading="lazy">`;
 
         const tagsLine = (pub.tags && pub.tags.length)
             ? '\n                ' + pub.tags.map(t => `<span class="pub-tag">${t}</span>`).join('\n                ')
@@ -133,9 +133,9 @@ function renderPublications(pubs) {
 
         return `        <tr class="pub-one">
             <!-- Teaser -->
-            <td class="pub-teaser-wrapper"><center>
+            <td class="pub-teaser-wrapper">
                 ${teaserTag}
-            </center></td>
+            </td>
             <!-- Description -->
             <td class="pub-desc-wrapper">
                 <span class="pub-title">${pub.title}</span>
@@ -198,7 +198,7 @@ ${internItems}
 
 function renderFooter(footer) {
     return `<iro-notice> Last Update: ${footer.lastUpdate} </iro-notice>
-<iro-notice> Designed by <a href="https://scholar.isshikih.top/">Yan XIA</a> @ <a href="https://github.com/IsshikiHugh/scholar">IsshikiHugh/scholar</a> </iro-notice>`;
+<iro-notice> Designed by <a href="https://scholar.isshikih.top/" ${EXT_ATTR}>Yan XIA</a> @ <a href="https://github.com/IsshikiHugh/scholar" ${EXT_ATTR}>IsshikiHugh/scholar</a> </iro-notice>`;
 }
 
 function renderHome(data) {
@@ -220,4 +220,82 @@ function renderHome(data) {
         '',
         renderFooter(data.footer),
     ].join('\n');
+}
+
+// ─── Document metadata (SEO / social cards) ─────────────────────────
+//
+// Generated from data.json at runtime so the site stays config-driven. Values
+// are computed by MetaKit (js/meta.js), the same module the CI injector uses,
+// so runtime and build-time output never drift.
+//
+// NOTE: these tags are injected by JavaScript, so JS-rendering crawlers (e.g.
+// Google) pick them up, but social link-preview crawlers (Twitter/X, Slack,
+// Facebook) generally do NOT run JS. scripts/inject-meta.js writes the same
+// tags statically into index.html at deploy time to cover those crawlers.
+
+function _upsertHeadEl(selector, create) {
+    let el = document.head.querySelector(selector);
+    if (!el) {
+        el = create();
+        document.head.appendChild(el);
+    }
+    return el;
+}
+
+function _setNamedMeta(name, content) {
+    if (!content) return;
+    const el = _upsertHeadEl(`meta[name="${name}"]`, () => {
+        const m = document.createElement('meta');
+        m.setAttribute('name', name);
+        return m;
+    });
+    el.setAttribute('content', content);
+}
+
+function _setPropMeta(property, content) {
+    if (!content) return;
+    const el = _upsertHeadEl(`meta[property="${property}"]`, () => {
+        const m = document.createElement('meta');
+        m.setAttribute('property', property);
+        return m;
+    });
+    el.setAttribute('content', content);
+}
+
+function applyMeta(data) {
+    const meta = MetaKit.computeMeta(data, location.origin + location.pathname);
+
+    if (meta.name) document.title = meta.name;
+    _setNamedMeta('description', meta.description);
+    if (meta.keywords.length) _setNamedMeta('keywords', meta.keywords.join(', '));
+
+    _setPropMeta('og:type', 'profile');
+    _setPropMeta('og:title', meta.name);
+    _setPropMeta('og:description', meta.description);
+    _setPropMeta('og:url', meta.url);
+    _setPropMeta('og:image', meta.image);
+
+    _setNamedMeta('twitter:card', 'summary');
+    _setNamedMeta('twitter:title', meta.name);
+    _setNamedMeta('twitter:description', meta.description);
+    _setNamedMeta('twitter:image', meta.image);
+
+    if (meta.url) {
+        const link = _upsertHeadEl('link[rel="canonical"]', () => {
+            const l = document.createElement('link');
+            l.setAttribute('rel', 'canonical');
+            return l;
+        });
+        link.setAttribute('href', meta.url);
+    }
+
+    // schema.org Person JSON-LD.
+    let script = document.getElementById('jsonld-person');
+    if (!script) {
+        script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.id = 'jsonld-person';
+        document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(MetaKit.buildPerson(meta));
 }

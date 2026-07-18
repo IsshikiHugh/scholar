@@ -99,6 +99,48 @@ iro-notice a {
     margin-left: 2em;
 }
 
+/* Profile section layout (previously inline styles). */
+.profile-row {
+    display: flex;
+    align-items: center;
+}
+
+.profile-desc {
+    flex: 7;
+}
+
+.profile-heading {
+    text-align: center;
+}
+
+.profile-title {
+    font-family: Times, serif;
+}
+
+.profile-name {
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.profile-at {
+    color: var(--iro-text-color-lightest);
+}
+
+.profile-avatar {
+    flex: 3;
+    margin-left: 20px;
+}
+
+.profile-avatar-img {
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--iro-theme-color-lighter);
+    box-sizing: border-box;
+    display: block;
+}
+
 @media (max-width: 640px) {
     .content {
         padding-left: 5%;

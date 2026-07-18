@@ -45,6 +45,17 @@ This document covers everything needed to understand, use, and extend the conten
 | `profile.links[].name` | `string` | yes | Link display label |
 | `profile.links[].url` | `string` | yes | Link URL |
 
+### `site` — Site / SEO metadata
+
+Drives the document title, meta description, Open Graph / Twitter cards, canonical link, and a schema.org `Person` JSON-LD block. All of it is generated from data.json at runtime by `applyMeta()` in `renderer.js` (called from `loadHome()`), so the site stays a reusable template. Note: JS-injected tags are seen by JS-rendering search engines (e.g. Google) but not by social link-preview crawlers that don't run JS.
+
+| Field Path | Type | Required | Description |
+|---|---|---|---|
+| `site.url` | `string` | no | Canonical base URL. Used for `og:url`, the canonical link, and to resolve a relative `avatar` into an absolute `og:image` |
+| `site.title` | `string` | no | Document/OG title. Falls back to `profile.myName` |
+| `site.description` | `string` | no | Meta/OG description. Falls back to the first `profile.bio` paragraph (HTML stripped) |
+| `site.keywords` | `Array<string>` | no | Emitted as `<meta name="keywords">` |
+
 ### `news` — News section
 
 | Field Path | Type | Required | Description |
@@ -342,6 +353,11 @@ Complete mapping from data.json fields to renderer functions and editor schema.
 | `profile.links` | `renderProfile()` | Profile | `array<object>` |
 | `profile.links[].name` | `renderProfile()` | Profile | `text` |
 | `profile.links[].url` | `renderProfile()` | Profile | `url` |
+| `site` | `applyMeta()` | Site / SEO | — |
+| `site.url` | `applyMeta()` | Site / SEO | `url` |
+| `site.title` | `applyMeta()` | Site / SEO | `text` |
+| `site.description` | `applyMeta()` | Site / SEO | `textarea` |
+| `site.keywords` | `applyMeta()` | Site / SEO | `array<text>` |
 | `news[]` | `renderNews()` | News | `array<object>` |
 | `news[].date` | `renderNews()` | News | `text` |
 | `news[].content` | `renderNewsContent()` | News | `textarea` |
