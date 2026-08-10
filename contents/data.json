@@ -106,9 +106,10 @@
             ],
             "links": {
                 "project page": "https://zju3dv.github.io/htd-refine",
-                "arXiv": "https://arxiv.org/abs/2605.26879"
+                "arXiv": "https://arxiv.org/abs/2605.26879",
+                "code": "https://github.com/ant-research/HTD-Refine"
             },
-            "repo_id": ""
+            "repo_id": "ant-research/HTD-Refine"
         },
         {
             "teaser": {
@@ -280,6 +281,6 @@
         "Yujun Shen": "https://shenyujun.github.io/"
     },
     "footer": {
-        "lastUpdate": "2026.07.01"
+        "lastUpdate": "2026.08.10"
     }
 }
