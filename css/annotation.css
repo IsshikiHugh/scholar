@@ -12,6 +12,9 @@
     padding: 6px 12px;
     color: var(--iro-text-color-lightest);
 
+    /* Desktop: a single-line bubble starting at the word, as originally designed.
+       It can only overflow on very narrow desktop windows, where `overflow-x:
+       clip` on <html> (css/page.css) keeps it from panning the page. */
     white-space: nowrap;
     border-radius: 10px 0px 10px 0px;
     background-color: rgb(64, 64, 64, 0.90);
@@ -23,6 +26,26 @@
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.32);
 }
 
-.annotation:hover .annotation-text {
+/* :active makes the tooltip reachable by tap-and-hold on touch devices,
+   which have no hover. */
+.annotation:hover .annotation-text,
+.annotation:active .annotation-text {
     visibility: visible;
+}
+
+/* On phones a bubble anchored to the word would hang off the screen edge (and,
+   being laid out even while hidden, would stretch the page), so it becomes a
+   wrapping toast pinned to the bottom of the viewport instead. */
+@media (max-width: 640px) {
+    .annotation .annotation-text {
+        position: fixed;
+        left: 50%;
+        right: auto;
+        top: auto;
+        bottom: 16px;
+        transform: translateX(-50%);
+        white-space: normal;
+        width: max-content;
+        max-width: calc(100vw - 32px);
+    }
 }

@@ -37,6 +37,13 @@
 }
 
 
+/* The publication list is a <table>; keep it inside its section instead of
+   letting the fixed-width teaser column dictate a wider layout. */
+iro-section table {
+    width: 100%;
+    table-layout: fixed;
+}
+
 .pub-teaser-wrapper {
     padding-right: 10px;
     padding-top: 20px;
@@ -134,4 +141,33 @@
 @keyframes pub-tag-shine {
     from { background-position: 130% 0; }
     to   { background-position: -30% 0; }
+}
+
+/* On phones a 160px teaser column leaves the description too narrow to read,
+   so the table rows collapse into stacked blocks: teaser on top, text below. */
+@media (max-width: 640px) {
+    iro-section table,
+    .pub-one,
+    .pub-teaser-wrapper,
+    .pub-desc-wrapper {
+        display: block;
+        width: auto;
+    }
+
+    .pub-one + .pub-one {
+        margin-top: 24px;
+        border-top: 1px solid var(--iro-border-color);
+    }
+
+    .pub-teaser-wrapper {
+        padding: 20px 0 0;
+    }
+
+    .pub-desc-wrapper {
+        padding: 10px 0 0;
+    }
+
+    .pub-title {
+        font-size: 19px;
+    }
 }
