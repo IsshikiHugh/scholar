@@ -1,29 +1,13 @@
 /* Configurations. */
 :root {
     --pub-hover-animation-duration: 0.2s;
+    --pub-teaser-float-curve: cubic-bezier(0.22, 1, 0.36, 1); /* ease-out quint: long, gentle settle, no overshoot */
 }
 
-@keyframes overrush-zoom-animation {
-    0% {
-        transform: scale(1);
-        box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.20);
-    }
-
-    90% {
-        transform: scale(1.03);
-        box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.20);
-    }
-
-    100% {
-        transform: scale(1.02);
-        box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.32);
-    }
-}
-
+/* Teaser floats up on hover and settles back on unhover. */
 .pub-one:hover .pub-teaser {
-    animation: overrush-zoom-animation var(--pub-hover-animation-duration) ease-in-out;
-    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.32);
-    transform: scale(1.02);
+    box-shadow: 1px 3px 14px rgba(0, 0, 0, 0.26);
+    transform: translateY(-1.5px) scale(1.02);
 }
 
 .pub-one:hover .me {
@@ -55,9 +39,9 @@ iro-section table {
     width: 100%;
     box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.12);
     border-radius: .3em;
-    transition: box-shadow var(--pub-hover-animation-duration), transform var(--pub-hover-animation-duration);
-    transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
-    /* Custom curve */
+    /* Same duration as the title/author text-shadow, so they peak and settle together. */
+    transition: box-shadow var(--pub-hover-animation-duration) var(--pub-teaser-float-curve),
+                transform var(--pub-hover-animation-duration) var(--pub-teaser-float-curve);
 }
 
 .pub-desc-wrapper {

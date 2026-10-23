@@ -21,8 +21,11 @@ body {
     background: var(--iro-bg-color-darkest);
 }
 
+/* Every link cross-fades its colour (and dashed underline) on hover and
+   back on unhover. */
 a {
     color: var(--iro-url-deactivate-color);
+    transition: color 0.3s ease-in-out, text-decoration-color 0.3s ease-in-out;
 }
 
 a:hover {
@@ -33,7 +36,6 @@ a:hover {
 .subtle-link {
     color: var(--iro-text-color);
     text-decoration: none;
-    transition: color 0.2s;
 }
 
 .subtle-link:hover {
